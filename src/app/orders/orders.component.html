@@ -1,0 +1,19 @@
+<form class="row" (submit)="addOrder($event)">
+    <div class="form-group">
+        <input type="text" [(ngModel)]="product" name="product" class="form-control" placeholder="New Order">
+    </div>
+</form>
+
+<div class="row" *ngFor="let order of orders">
+    <div class="col-sm-1">
+        <input type="checkbox">
+    </div>
+    <div class="col-sm-7">
+        {{order.product}}
+    </div>
+    <div class="col-sm-4">
+        <input type="button" (click)="deleteOrder(order._id)" value="Delete" class="btn btn-danger">
+    </div>
+    <br>
+    <br>
+</div>
