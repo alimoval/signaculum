@@ -1,19 +1,17 @@
 <div class="ui container">
   <div class="ui two column grid menu" style="background-color: #37474f;">
-    <!-- Router link "routerLink="/order"" has been deleted -->
-    <div class="eleven wide column item link">
+    <div routerLink="/products" class="eleven wide column item link">
       <h2 class="ui inverted header">
         <i class="print blue icon"></i> Signaculum
       </h2>
     </div>
-    <!-- Router link "routerLink="/order"" has been deleted -->
-    <div class="five wide right aligned column">
+    <div routerLink="/products" class="five wide right aligned column">
       <button class="ui facebook mini button">
         <i class="facebook icon"></i>Like
       </button>
     </div>
   </div>
-  <products></products>
+  <router-outlet></router-outlet>
 </div>
 <br>
 <div class="ui inverted vertical footer segment site-content">

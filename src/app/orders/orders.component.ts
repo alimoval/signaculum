@@ -12,7 +12,9 @@ export class OrdersComponent implements OnInit {
   public orders: Order[];
   public product: string;
 
-  constructor(private _orderService: OrderService) { }
+  constructor(private _orderService: OrderService) {
+    console.log('Order Service Initialized');
+  }
 
   getOrders() {
     this._orderService.getOrders()
