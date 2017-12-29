@@ -11,6 +11,7 @@ export class OrdersComponent implements OnInit {
 
   public orders: Order[];
   public product: string;
+  public size: string;
 
   constructor(private _orderService: OrderService) {
     console.log('Order Service Initialized');

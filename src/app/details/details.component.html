@@ -1,0 +1,152 @@
+<div class="ui stackable grid">
+  <div class="nine wide column">
+    <form class="ui form" *ngIf="sizeFlag">
+      <div style="background-color: #fafafa;" class="ui left aligned large raised segment">
+        <p>
+          <i class="icon green shop"></i>
+          <i class="icon green gift"></i> 2. Дізнайтесь ціну і подарунок.</p>
+        <p>Логотип нагорі поверне до меню товарів.
+          <i class="icon blue arrow up"></i>
+        </p>
+        <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціни моментально. </p>
+        <div class="field">
+          <label>Розмір:</label>
+          <select class="ui fluid size dropdown" [(ngModel)]="size" name="size" (change)="tempFormValueRefresh()">
+            <option *ngFor="let size of product.sizes">{{size}}</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Кількість:</label>
+          <input type="text" [(ngModel)]="amount" name="amount" (input)="tempFormValueRefresh()">
+        </div>
+        <h2 class="ui green header">
+          {{product.name}}
+        </h2>
+        <div class="ui two columns grid">
+          <div class="nine wide column">
+            <h2 class="ui green header">
+              {{price}} грн
+            </h2>
+            {{orderAmount}} одиниць.
+          </div>
+          <div class="seven wide column">
+          </div>
+        </div>
+        <h3 class="ui green header">
+          <i class="icon gift"></i> Доставка у подарунок!
+        </h3>
+      </div>
+      <div *ngIf="outdoor" class="ui raised segment">
+        <div class="field">
+          <label>Для розрахунку ціни оберіть розмір:</label>
+          <input type="text" placeholder="ширина" [(ngModel)]="sizeWidth" name="sizeWidth">
+        </div>
+        <div class="field">
+          <input type="text" placeholder="висота" [(ngModel)]="sizeHeight" name="sizeHeight">
+        </div>
+        <div class="field">
+          <label>Вкажіть кількість копій:</label>
+          <input type="text" [(ngModel)]="amount" name="amount" (input)="tempFormValueRefresh()">
+        </div>
+      </div>
+      <div style="background-color: #fafafa;" class="ui large raised segment">
+        <p>
+          <i class="icon green image"></i> 3. Завантажте або замовте макет.</p>
+        <div class="field">
+          <button class="ui basic black button" (click)="designUpload()">
+            <i class="upload icon"></i>
+            Завантажити файл
+          </button>
+          <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
+        </div>
+        <div class="field">
+          <label>Або вкажіть адресу до свого файлу:</label>
+          <input type="text" placeholder="Google Drive, DropBox або інше" [(ngModel)]="fileLink" name="fileLink" (input)="tempFormValueRefresh();">
+        </div>
+        <div class="field">
+          <label>Або просто опішіть словами яким ви бачите макет свого товару. Вкажіть свої деталі (тексти, список послуг, телефонні
+            номери). Щоб зробити ваш макет швидко, важливо мати чітке технічне завдання (ТЗ).</label>
+          <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
+            rows="5" [(ngModel)]="description" name="description" (input)="tempFormValueRefresh(); showEmailInput();">
+                            </textarea>
+        </div>
+        <div class="field" *ngIf="showEmailInputFlag">
+          <label>Та вкажіть Email на який вам відправити готовий макет:</label>
+          <input type="text" [(ngModel)]="email" name="email" (change)="tempFormValueRefresh()">
+        </div>
+      </div>
+      <div style="background-color: #fafafa;" class="ui large raised segment">
+        <div class="field">
+          <p>
+            <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою</p>
+          <label>Номер телефону:</label>
+          <input type="text" placeholder="+380" [(ngModel)]="phone" name="phone" (change)="tempFormValueRefresh()">
+        </div>
+        <div class="fields">
+          <div class="eight wide field">
+            <label>Прізвище:</label>
+            <input type="text" [(ngModel)]="surName" name="surName" (change)="tempFormValueRefresh()">
+          </div>
+          <div class="eight wide field">
+            <label>Iм`я:</label>
+            <input type="text" [(ngModel)]="name" name="name" (change)="tempFormValueRefresh()">
+          </div>
+        </div>
+        <br>
+        <div class="field">
+          <label>Адреса доставки:</label>
+          <select class="ui fluid city search dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
+            <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities">{{city.Description}}</option>
+          </select>
+          <br>
+          <input type="text" [hidden]="true" [(ngModel)]="address" name="address">
+          <select class="ui fluid warehouse search dropdown" [(ngModel)]="warehouse" name="warehouse" (change)="tempFormValueRefresh();">
+            <option value="{{warehouse.Description}}" *ngFor="let warehouse of novaPoshtaWarehouses">{{warehouse.Description}}</option>
+          </select>
+        </div>
+      </div>
+      <div style="background-color: #fafafa;" class="ui large raised segment">
+        <h1 class="ui green header">
+          <div class="content">
+            Ціна {{price}} грн
+          </div>
+        </h1>
+        <div class="field">
+          <button class="ui blue big button" (click)="makeOrder(); ">
+            <i class="icon shop"></i>
+            Замовити
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="ui basic modal">
+      <div class="ui icon small header">
+        <i class="green rocket icon"></i> Ваше замовлення зафiксовано
+      </div>
+      <div class="content">
+        <p>
+          <i class="green payment icon"></i> 5. Оплата.</p>
+        <p> Сплатіть {{price}} грн. на рахунок 234567890123456. У разі сплати через Приват24, обовязково в коментарях до платежа
+          вкажіть номер телефону, який ви вказали у замовленні. В іншому випадку зателефонуйте щоб нічого не сплуталось.</p>
+      </div>
+      <div class="actions">
+        <div class="ui red cancel inverted button">
+          <i class="remove icon"></i> Назад
+        </div>
+        <div class="ui green ok inverted button">
+          <i class="checkmark icon"></i> Добре, йду до банку
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="seven wide right aligned column">
+    <div class="ui raised segment" style="background-color: #fafafa;">
+      <div class="ui fluid image">
+        <img src="{{product.imgSrc}}" alt="" class="ui image">
+      </div>
+    </div>
+    <br>
+  </div>
+</div>
+
+DETAILS

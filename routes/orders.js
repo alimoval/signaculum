@@ -76,14 +76,4 @@ router.put('/order/:id', function (req, res, next) {
     }
 });
 
-//Get All Products
-router.get('/products', function (req, res, next) {
-    db.products.find(function (err, products) {
-        if (err) {
-            res.send(err);
-        }
-        res.json(products);
-    });
-})
-
 module.exports = router;

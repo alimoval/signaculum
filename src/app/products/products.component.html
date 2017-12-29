@@ -7,7 +7,7 @@
     <i class="icon green arrow down"></i>1. Оберіть потрібний товар.</p>
   <div class="ui two columns doubling grid menu">
     <div class="ui column item link" *ngFor='let product of products'>
-      <a [routerLink]="['details', product._id]" routerLinkActive="active">
+      <a [routerLink]="['/details', product._id]" routerLinkActive="active">
         <div class="ui top left big blue attached label">{{product.name}}</div>
         <img [src]="product.imgSrc" alt="" class="ui image">
       </a>

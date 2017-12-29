@@ -14,7 +14,7 @@ router.get('/products', function (req, res, next) {
 });
 
 //Get Single Products
-router.get('/product/:id', function (req, res, next) {
+router.get('/details/:id', function (req, res, next) {
     db.products.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, product) {
         if (err) {
             res.send(err);
@@ -75,15 +75,5 @@ router.put('/product/:id', function (req, res, next) {
         });
     }
 });
-
-//Get All Products
-router.get('/products', function (req, res, next) {
-    db.products.find(function (err, products) {
-        if (err) {
-            res.send(err);
-        }
-        res.json(products);
-    });
-})
 
 module.exports = router;
