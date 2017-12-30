@@ -14,7 +14,7 @@ router.get('/products', function (req, res, next) {
 });
 
 //Get Single Products
-router.get('/details/:id', function (req, res, next) {
+router.get('/order-details/:id', function (req, res, next) {
     db.products.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, product) {
         if (err) {
             res.send(err);

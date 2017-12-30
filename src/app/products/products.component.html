@@ -1,13 +1,14 @@
 <div class="ui left aligned large raised segment" style="background-color: #eceff1;">
   <h3 class="ui header">Ласкаво просимо!</h3>
-  <h4 class="ui header">Це місце зроблене для Вас. Швидке замовлення друку вашої поліграфічної продукції.</h4>
+  <h4 class="ui header">Це місце зроблене для Вас. Швидко замовляйте та дізнавайтесь ціну друку вашої поліграфічної продукції.</h4>
   <p>
     <i class="icon ordered list"></i>Зробіть п`ять простих кроків.</p>
   <p>
     <i class="icon green arrow down"></i>1. Оберіть потрібний товар.</p>
+    <a routerLink="/orders" routerLinkActive="active">Orders</a>
   <div class="ui two columns doubling grid menu">
     <div class="ui column item link" *ngFor='let product of products'>
-      <a [routerLink]="['/details', product._id]" routerLinkActive="active">
+      <a [routerLink]="['/order-details/', product._id]">
         <div class="ui top left big blue attached label">{{product.name}}</div>
         <img [src]="product.imgSrc" alt="" class="ui image">
       </a>

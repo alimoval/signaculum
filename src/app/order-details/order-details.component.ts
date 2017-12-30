@@ -12,11 +12,11 @@ import { ProductService } from '../product.service';
 import { Product } from '../../Product';
 
 @Component({
-  selector: 'details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: 'order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.css']
 })
-export class DetailsComponent implements OnInit {
+export class OrderDetailsComponent implements OnInit {
 
   public product = <any>{};
   public sizeFlag: string;
@@ -44,7 +44,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.getProduct();
+    this.getProduct();
   }
 
 }

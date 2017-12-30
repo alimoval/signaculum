@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="nine wide column">
-    <form class="ui form" *ngIf="sizeFlag">
+    <form class="ui form">
       <div style="background-color: #fafafa;" class="ui left aligned large raised segment">
         <p>
           <i class="icon green shop"></i>
@@ -68,7 +68,7 @@
             номери). Щоб зробити ваш макет швидко, важливо мати чітке технічне завдання (ТЗ).</label>
           <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
             rows="5" [(ngModel)]="description" name="description" (input)="tempFormValueRefresh(); showEmailInput();">
-                            </textarea>
+                              </textarea>
         </div>
         <div class="field" *ngIf="showEmailInputFlag">
           <label>Та вкажіть Email на який вам відправити готовий макет:</label>
@@ -148,5 +148,3 @@
     <br>
   </div>
 </div>
-
-DETAILS

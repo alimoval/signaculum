@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-
+import { Http, Headers, Response } from '@angular/http';
+import { Product } from '../Product'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -11,15 +11,12 @@ export class ProductService {
 
   getProducts() {
     return this._http.get('http://localhost:3000/products')
-      .map(res => res.json());
+      .map(res => res.json() as Product[]);
   }
 
   getProduct(id: string) {
-    return this.getProducts()
-                .map(products => {
-                  console.log(products);
-                  products.find(product => product._id === id)
-                });
+    return this._http.get('http://localhost:3000/order-details/' + id)
+      .map(res => res.json() as Product);
   }
 
 }
