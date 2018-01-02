@@ -22,7 +22,7 @@ import { NovaPoshtaService } from '../nova-poshta.service';
 export class OrderDetailsComponent implements OnInit {
 
   public orderForm: FormGroup;
-  public product: any;
+  public product: Product;
   public price = 0;
   public sizeFlag: boolean;
   public outdoor: boolean;
@@ -47,7 +47,6 @@ export class OrderDetailsComponent implements OnInit {
       .switchMap((params: Params) => this._productService.getProduct(params['id']))
       .subscribe(product => {
         this.product = product;
-        console.log(this.product);
         this.createForm(this.product);
         this.priceCalculate();
         // this.sizeFlag = this.product.sizeFlag;
@@ -67,7 +66,7 @@ export class OrderDetailsComponent implements OnInit {
       link: '',
       name: ['', Validators.required],
       product: [product.name, Validators.required],
-      price: ['', Validators.required],
+      price: [product.price, Validators.required],
       phone: ['', Validators.required],
       size: [product.sizes[0], Validators.required],
       surName: ['', Validators.required],
@@ -98,6 +97,9 @@ export class OrderDetailsComponent implements OnInit {
         this.priceCalculate();
       }
     }
+    this.orderForm.patchValue({
+      price: this.price
+    });
   }
 
   // Refresh Prices
@@ -141,13 +143,10 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   onSubmit(formData: any): void {
-    this.orderForm.patchValue({
-      price: this.price
-    });
-    console.log(formData);
     this.addOrder(formData);
     const orderElement = document.getElementById('parent');
     const data = JSON.stringify(formData);
+    console.log(data);
     orderElement.innerHTML = data.split(',').join('\n');
   }
 
