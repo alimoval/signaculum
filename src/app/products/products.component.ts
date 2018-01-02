@@ -11,9 +11,7 @@ export class ProductsComponent implements OnInit {
 
   public products: Product[];
 
-  constructor(private _productService: ProductService) {
-    console.log('Product Service Initialized');
-  }
+  constructor(private _productService: ProductService) { }
 
   getProducts() {
     this._productService.getProducts()

@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="nine wide column">
-    <form class="ui form">
+    <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value); addOrder($event)">
       <div style="background-color: #fafafa;" class="ui left aligned large raised segment">
         <p>
           <i class="icon green shop"></i>
@@ -11,13 +11,13 @@
         <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціни моментально. </p>
         <div class="field">
           <label>Розмір:</label>
-          <select class="ui fluid size dropdown" [(ngModel)]="size" name="size" (change)="tempFormValueRefresh()">
+          <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
             <option *ngFor="let size of product.sizes">{{size}}</option>
           </select>
         </div>
         <div class="field">
           <label>Кількість:</label>
-          <input type="text" [(ngModel)]="amount" name="amount" (input)="tempFormValueRefresh()">
+          <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
         </div>
         <h2 class="ui green header">
           {{product.name}}
@@ -36,19 +36,19 @@
           <i class="icon gift"></i> Доставка у подарунок!
         </h3>
       </div>
-      <div *ngIf="outdoor" class="ui raised segment">
-        <div class="field">
-          <label>Для розрахунку ціни оберіть розмір:</label>
-          <input type="text" placeholder="ширина" [(ngModel)]="sizeWidth" name="sizeWidth">
-        </div>
-        <div class="field">
-          <input type="text" placeholder="висота" [(ngModel)]="sizeHeight" name="sizeHeight">
-        </div>
-        <div class="field">
-          <label>Вкажіть кількість копій:</label>
-          <input type="text" [(ngModel)]="amount" name="amount" (input)="tempFormValueRefresh()">
-        </div>
-      </div>
+      <!-- <div *ngIf="outdoor" class="ui raised segment">
+              <div class="field">
+                  <label>Для розрахунку ціни оберіть розмір:</label>
+                  <input type="text" placeholder="ширина" formControlName="sizeWidth">
+              </div>
+              <div class="field">
+                  <input type="text" placeholder="висота" formControlName="sizeHeight">
+              </div>
+              <div class="field">
+                  <label>Вкажіть кількість копій:</label>
+                  <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
+              </div>
+          </div> -->
       <div style="background-color: #fafafa;" class="ui large raised segment">
         <p>
           <i class="icon green image"></i> 3. Завантажте або замовте макет.</p>
@@ -61,18 +61,18 @@
         </div>
         <div class="field">
           <label>Або вкажіть адресу до свого файлу:</label>
-          <input type="text" placeholder="Google Drive, DropBox або інше" [(ngModel)]="fileLink" name="fileLink" (input)="tempFormValueRefresh();">
+          <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
         </div>
         <div class="field">
           <label>Або просто опішіть словами яким ви бачите макет свого товару. Вкажіть свої деталі (тексти, список послуг, телефонні
             номери). Щоб зробити ваш макет швидко, важливо мати чітке технічне завдання (ТЗ).</label>
           <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
-            rows="5" [(ngModel)]="description" name="description" (input)="tempFormValueRefresh(); showEmailInput();">
-                              </textarea>
+            rows="5" formControlName="description" (input)="tempFormValueRefresh(); showEmailInput();">
+                      </textarea>
         </div>
         <div class="field" *ngIf="showEmailInputFlag">
           <label>Та вкажіть Email на який вам відправити готовий макет:</label>
-          <input type="text" [(ngModel)]="email" name="email" (change)="tempFormValueRefresh()">
+          <input type="text" formControlName="email" (change)="tempFormValueRefresh()">
         </div>
       </div>
       <div style="background-color: #fafafa;" class="ui large raised segment">
@@ -80,27 +80,31 @@
           <p>
             <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою</p>
           <label>Номер телефону:</label>
-          <input type="text" placeholder="+380" [(ngModel)]="phone" name="phone" (change)="tempFormValueRefresh()">
+          <input type="text" placeholder="+380" formControlName="phone" (change)="tempFormValueRefresh()">
         </div>
         <div class="fields">
           <div class="eight wide field">
             <label>Прізвище:</label>
-            <input type="text" [(ngModel)]="surName" name="surName" (change)="tempFormValueRefresh()">
+            <input type="text" formControlName="surName" (change)="tempFormValueRefresh()">
           </div>
           <div class="eight wide field">
             <label>Iм`я:</label>
-            <input type="text" [(ngModel)]="name" name="name" (change)="tempFormValueRefresh()">
+            <input type="text" formControlName="name" (change)="tempFormValueRefresh()">
           </div>
         </div>
         <br>
         <div class="field">
-          <label>Адреса доставки:</label>
+          <label>Місто доставки:</label>
           <select class="ui fluid city search dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
             <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities">{{city.Description}}</option>
           </select>
+          <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
+                  <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>
+              </select>-->
           <br>
-          <input type="text" [hidden]="true" [(ngModel)]="address" name="address">
-          <select class="ui fluid warehouse search dropdown" [(ngModel)]="warehouse" name="warehouse" (change)="tempFormValueRefresh();">
+          <input type="text" [hidden]="true" formControlName="address">
+          <label>Відділення:</label>
+          <select class="ui fluid warehouse search dropdown" formControlName="warehouse" (change)="tempFormValueRefresh();">
             <option value="{{warehouse.Description}}" *ngFor="let warehouse of novaPoshtaWarehouses">{{warehouse.Description}}</option>
           </select>
         </div>
@@ -112,7 +116,7 @@
           </div>
         </h1>
         <div class="field">
-          <button class="ui blue big button" (click)="makeOrder(); ">
+          <button class="ui blue big button">
             <i class="icon shop"></i>
             Замовити
           </button>
@@ -140,9 +144,9 @@
     </div>
   </div>
   <div class="seven wide right aligned column">
-    <div class="ui raised segment" style="background-color: #fafafa;">
+    <div id="parent" class="ui raised segment" style="background-color: #fafafa;">
       <div class="ui fluid image">
-        <img src="{{product.imgSrc}}" alt="" class="ui image">
+        <img *ngIf="false" [src]="product.imgSrc" alt="" class="ui image">
       </div>
     </div>
     <br>
