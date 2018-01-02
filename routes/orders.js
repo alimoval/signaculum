@@ -26,8 +26,9 @@ router.get('/order/:id', function (req, res, next) {
 //Save Order
 router.post('/order', function (req, res, next) {
     var order = req.body;
+    console.log('backend:' + JSON.stringify(order));
     //Verify
-    if (!order.name) {
+    if (!order) {
         res.status(400);
         res.json({
             "error": "Bad Data"

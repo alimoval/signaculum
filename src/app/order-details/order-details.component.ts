@@ -14,6 +14,7 @@ import { Product } from '../../Product';
 import { NovaPoshtaService } from '../nova-poshta.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css']
@@ -40,7 +41,7 @@ export class OrderDetailsComponent implements OnInit {
     private _fb: FormBuilder
   ) { }
 
-  //Get Order Product
+  // Get Order Product
   getProduct() {
     this._route.params
       .switchMap((params: Params) => this._productService.getProduct(params['id']))
@@ -54,7 +55,7 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
 
-  //Build Reactive Form
+  // Build Reactive Form
   createForm(product?) {
     this.orderForm = this._fb.group({
       address: ['', Validators.required],
@@ -74,7 +75,7 @@ export class OrderDetailsComponent implements OnInit {
     });
   }
 
-  //Calculate Selected Product Price
+  // Calculate Selected Product Price
   priceCalculate() {
     const sizeValue = this.orderForm.get('size').value;
     const index = this.product.sizes.indexOf(sizeValue);
@@ -99,7 +100,7 @@ export class OrderDetailsComponent implements OnInit {
     }
   }
 
-  //Refresh Prices
+  // Refresh Prices
   tempFormValueRefresh() {
     this.priceCalculate();
   }
@@ -133,16 +134,21 @@ export class OrderDetailsComponent implements OnInit {
     this.tempFormValueRefresh();
   }
 
+  addOrder(data) {
+    console.log('data in addOrder order-details.component: \n' + data);
+    this._orderService.addOrder(data)
+      .subscribe();
+  }
+
   onSubmit(formData: any): void {
     this.orderForm.patchValue({
       price: this.price
     });
     console.log(formData);
-    var order = document.getElementById('parent');
-    var data = JSON.stringify(formData);
-    this._orderService.addOrder(data)
-      .subscribe();
-    order.innerHTML = data.split(',').join('\n');
+    this.addOrder(formData);
+    const orderElement = document.getElementById('parent');
+    const data = JSON.stringify(formData);
+    orderElement.innerHTML = data.split(',').join('\n');
   }
 
   designUpload() {

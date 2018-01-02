@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="nine wide column">
-    <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value); addOrder($event)">
+    <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
       <div style="background-color: #fafafa;" class="ui left aligned large raised segment">
         <p>
           <i class="icon green shop"></i>

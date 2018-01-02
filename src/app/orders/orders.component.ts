@@ -3,6 +3,7 @@ import { OrderService } from '../order.service';
 import { Order } from '../../Order';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'orders',
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css']
@@ -13,9 +14,7 @@ export class OrdersComponent implements OnInit {
   public product: string;
   public size: string;
 
-  constructor(private _orderService: OrderService) {
-    console.log('Order Service Initialized');
-  }
+  constructor(private _orderService: OrderService) { }
 
   getOrders() {
     this._orderService.getOrders()
@@ -26,9 +25,9 @@ export class OrdersComponent implements OnInit {
 
   addOrder(event) {
     event.preventDefault();
-    var newOrder = {
-      product: this.product
-    }
+    const newOrder = {
+      name: this.product
+    };
     this._orderService.addOrder(newOrder)
       .subscribe(order => {
         this.orders.push(order);
@@ -37,12 +36,12 @@ export class OrdersComponent implements OnInit {
   }
 
   deleteOrder(id) {
-    var orders = this.orders;
+    const orders = this.orders;
     this._orderService.deleteOrder(id)
       .subscribe(data => {
-        if (data.n == 1) {
-          for (var i = 0; i < orders.length; i++) {
-            if (orders[i]._id == id) {
+        if (data.n === 1) {
+          for (let i = 0; i < orders.length; i++) {
+            if (orders[i]._id === id) {
               orders.splice(i, 1);
             }
           }
