@@ -6,12 +6,15 @@
 
 <div class="row" *ngFor="let order of orders">
     <div class="col-sm-1">
-        <input type="checkbox">
+        {{order.price}}
     </div>
-    <div class="col-sm-7">
+    <div class="col-sm-4">
         {{order.product}}
     </div>
     <div class="col-sm-4">
+        {{order.amount}}
+    </div>
+    <div class="col-sm-3">
         <input type="button" (click)="deleteOrder(order._id)" value="Delete" class="btn btn-danger">
     </div>
     <br>

@@ -12,12 +12,10 @@ export class OrderService {
       .map(res => res.json());
   }
 
-
   addOrder(newOrder) {
     const headers = new Headers();
-    console.log('data in order.service: \n' + newOrder);
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    return this._http.post('http://localhost:3000/api/order', JSON.stringify(newOrder), { headers: headers })
+    headers.append('Content-Type', 'application/json');
+    return this._http.post('http://localhost:3000/api/order', newOrder, { headers: headers })
       .map(res => res.json());
   }
 

@@ -61,7 +61,6 @@ export class OrderDetailsComponent implements OnInit {
       amount: [1000, Validators.required],
       description: '',
       email: '',
-      id: [product._id, Validators.required],
       image: [],
       link: '',
       name: ['', Validators.required],
@@ -137,7 +136,6 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   addOrder(data) {
-    console.log('data in addOrder order-details.component: \n' + data);
     this._orderService.addOrder(data)
       .subscribe();
   }
@@ -146,7 +144,6 @@ export class OrderDetailsComponent implements OnInit {
     this.addOrder(formData);
     const orderElement = document.getElementById('parent');
     const data = JSON.stringify(formData);
-    console.log(data);
     orderElement.innerHTML = data.split(',').join('\n');
   }
 

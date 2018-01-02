@@ -26,7 +26,7 @@ export class OrdersComponent implements OnInit {
   addOrder(event) {
     event.preventDefault();
     const newOrder = {
-      name: this.product
+      product: this.product
     };
     this._orderService.addOrder(newOrder)
       .subscribe(order => {

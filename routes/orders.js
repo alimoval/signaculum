@@ -26,7 +26,7 @@ router.get('/order/:id', function (req, res, next) {
 //Save Order
 router.post('/order', function (req, res, next) {
     var order = req.body;
-    console.log('backend:' + JSON.stringify(order));
+    // console.log('backend:' + order);
     //Verify
     if (!order) {
         res.status(400);
