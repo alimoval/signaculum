@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
-import { Product } from '../Product'
+import { Product } from '../Product';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 

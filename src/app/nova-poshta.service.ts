@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http'
+import { Http, Headers, Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -12,7 +12,7 @@ export class NovaPoshtaService {
 
     constructor(private _http: Http) { }
 
-    //Get All Nova Poshta Cities;
+    // Get All Nova Poshta Cities;
     getCities() {
         const body = {
             'modelName': 'Address',
@@ -29,7 +29,7 @@ export class NovaPoshtaService {
             .map(response => response.json());
     }
 
-    //Get Order City
+    // Get Order City
     getCity(ref) {
         const body = {
             'modelName': 'Address',
@@ -47,7 +47,7 @@ export class NovaPoshtaService {
             .map(response => response.json());
     }
 
-    //Get Nova Poshta Warehouses In Selected City
+    // Get Nova Poshta Warehouses In Selected City
     getWarehouses(cityRef) {
         const body = {
             'modelName': 'AddressGeneral',
