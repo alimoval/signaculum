@@ -8,7 +8,7 @@
         <p>Логотип нагорі завжди поверне до меню товарів.
           <i class="icon blue arrow up"></i>
         </p>
-        <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціни моментально. </p>
+        <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну моментально. </p>
         <div class="field">
           <label>Розмір:</label>
           <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
@@ -129,7 +129,7 @@
           </div>
         </h1>
         <div class="field">
-          <button class="ui blue big button" [disabled]="!orderForm.valid">
+          <button class="ui blue big button" [disabled]="!orderForm.valid || purchaseFlag">
             <i class="icon shop"></i>
             Замовити
           </button>
@@ -137,9 +137,26 @@
             Заповніть обов`язкові поля щоб зробити замовлення
           </div>
         </div>
+        <div class="field">
+          <div class="segment" *ngIf="purchaseFlag">
+            <h2 class="ui green header">
+              <div class="content">
+                Ваше замовлення зафiксовано.
+              </div>
+            </h2>
+            <p>
+              <i class="green payment icon"></i> 5. Оплата.</p>
+            <p> Для запуску друку зробіть оплату {{price}} грн. на рахунок 3721714105055709.</p>
+            <p> У разі сплати через Приват24, обов`язково в коментарях до платежа вкажіть номер телефону, який ви вказали у замовленні.
+              В іншому випадку зателефонуйте щоб нічого не сплуталось. </p>
+            <div class="ui green ok inverted button">
+              <i class="checkmark icon"></i> Добре, йду до банку
+            </div>
+          </div>
+        </div>
       </div>
     </form>
-    <div class="ui basic modal">
+    <!-- <div class="ui basic modal">
       <div class="ui icon small header">
         <i class="green rocket icon"></i> Ваше замовлення зафiксовано
       </div>
@@ -157,10 +174,10 @@
           <i class="checkmark icon"></i> Добре, йду до банку
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="seven wide right aligned column">
-    <div id="parent" class="ui raised segment" style="background-color: #fafafa;">
+    <div class="ui raised segment" style="background-color: #fafafa;">
       <div *ngIf="product" class="ui fluid image">
         <img [src]="product.imgSrc" alt="" class="ui image">
       </div>

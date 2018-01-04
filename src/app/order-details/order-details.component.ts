@@ -31,6 +31,7 @@ export class OrderDetailsComponent implements OnInit {
   public novaPoshtaWarehouses: string;
   public orderAmount: string;
   public showEmailInputFlag = false;
+  public purchaseFlag = false;
 
   constructor(
     private _http: Http,
@@ -107,7 +108,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   searchByPhone() {
-    console.log('search throught API');
+    console.log('search throught all orders to find orders with this phone');
   }
 
   showEmailInput() {
@@ -145,14 +146,8 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   onSubmit(orderForm): void {
-    if (orderForm.status !== 'VALID') {
-      console.log('INVALID FORM');
-    } else {
-      this.addOrder(orderForm.value);
-    }
-    const orderElement = document.getElementById('parent');
-    const data = JSON.stringify(orderForm.value);
-    orderElement.innerHTML = data.split(',').join('\n');
+    this.addOrder(orderForm.value);
+    this.purchaseFlag = true;
   }
 
   designUpload() {
