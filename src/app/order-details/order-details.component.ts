@@ -54,7 +54,7 @@ export class OrderDetailsComponent implements OnInit {
       });
   }
 
-  // Build Reactive Form
+  // Build Reactive Order Form
   createForm(product?) {
     this.orderForm = this._fb.group({
       address: ['', Validators.required],
@@ -140,10 +140,14 @@ export class OrderDetailsComponent implements OnInit {
       .subscribe();
   }
 
-  onSubmit(formData: any): void {
-    this.addOrder(formData);
+  onSubmit(orderForm): void {
+    if (orderForm.status !== 'VALID') {
+      console.log('INVALID FORM');
+    } else {
+      this.addOrder(orderForm.value);
+    }
     const orderElement = document.getElementById('parent');
-    const data = JSON.stringify(formData);
+    const data = JSON.stringify(orderForm.value);
     orderElement.innerHTML = data.split(',').join('\n');
   }
 

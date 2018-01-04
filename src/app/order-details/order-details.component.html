@@ -1,6 +1,6 @@
 <div class="ui stackable grid">
   <div class="nine wide column">
-    <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm.value)">
+    <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
       <div style="background-color: #fafafa;" class="ui left aligned large raised segment">
         <p>
           <i class="icon green shop"></i>
@@ -67,7 +67,7 @@
           <label>Або просто опішіть словами яким ви бачите макет свого товару. Вкажіть свої деталі (тексти, список послуг, телефонні
             номери). Щоб зробити ваш макет швидко, важливо мати чітке технічне завдання (ТЗ).</label>
           <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
-            rows="5" formControlName="description" (input)="tempFormValueRefresh(); showEmailInput();">
+            rows="5" formControlName="description" (input)="showEmailInput();">
                       </textarea>
         </div>
         <div class="field" *ngIf="showEmailInputFlag">
@@ -120,6 +120,21 @@
             <i class="icon shop"></i>
             Замовити
           </button>
+          <div class="ui negative message" *ngIf="orderForm.get('phone').hasError('required')">
+            Phone is required
+          </div>
+          <div class="ui negative message" *ngIf="orderForm.get('name').hasError('required')">
+            Name is required
+          </div>
+          <div class="ui negative message" *ngIf="orderForm.get('surName').hasError('required')">
+            Surname is required
+          </div>
+          <div class="ui negative message" *ngIf="orderForm.get('address').hasError('required')">
+            Address is required
+          </div>
+          <div class="ui negative message" *ngIf="orderForm.get('warehouse').hasError('required')">
+            Warehouse is required
+          </div>
         </div>
       </div>
     </form>
@@ -145,8 +160,9 @@
   </div>
   <div class="seven wide right aligned column">
     <div id="parent" class="ui raised segment" style="background-color: #fafafa;">
-      <div class="ui fluid image">
-        <img *ngIf="false" [src]="product.imgSrc" alt="" class="ui image">
+      <div *ngIf="product" class="ui fluid image">
+        <p>Form status: {{ orderForm.status | json }}</p>
+        <img [src]="product.imgSrc" alt="" class="ui image">
       </div>
     </div>
     <br>
