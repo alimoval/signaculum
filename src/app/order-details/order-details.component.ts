@@ -106,6 +106,10 @@ export class OrderDetailsComponent implements OnInit {
     this.priceCalculate();
   }
 
+  searchByPhone() {
+    console.log('search throught API');
+  }
+
   showEmailInput() {
     this.showEmailInputFlag = true;
   }

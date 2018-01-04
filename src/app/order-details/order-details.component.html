@@ -5,7 +5,7 @@
         <p>
           <i class="icon green shop"></i>
           <i class="icon green gift"></i> 2. Дізнайтесь ціну і подарунок.</p>
-        <p>Логотип нагорі поверне до меню товарів.
+        <p>Логотип нагорі завжди поверне до меню товарів.
           <i class="icon blue arrow up"></i>
         </p>
         <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціни моментально. </p>
@@ -79,34 +79,47 @@
         <div class="field">
           <p>
             <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою</p>
-          <label>Номер телефону:</label>
-          <input type="text" placeholder="+380" formControlName="phone" (change)="tempFormValueRefresh()">
+          <label>Номер телефону: *</label>
+          <input type="text" placeholder="+380" formControlName="phone" (change)="searchByPhone()">
         </div>
-        <div class="fields">
-          <div class="eight wide field">
-            <label>Прізвище:</label>
-            <input type="text" formControlName="surName" (change)="tempFormValueRefresh()">
-          </div>
-          <div class="eight wide field">
-            <label>Iм`я:</label>
-            <input type="text" formControlName="name" (change)="tempFormValueRefresh()">
-          </div>
+        <div class="ui mini negative message" *ngIf="orderForm.get('phone').hasError('required') && orderForm.get('phone').touched">
+          Номер телефону - обов`язкове поле
         </div>
-        <br>
         <div class="field">
-          <label>Місто доставки:</label>
+          <label>Прізвище: *</label>
+          <input type="text" formControlName="surName" (change)="tempFormValueRefresh()">
+          <div class="ui mini negative message" *ngIf="orderForm.get('surName').hasError('required') && orderForm.get('surName').touched">
+            Прізвище - обов`язкове поле
+          </div>
+        </div>
+        <div class="field">
+          <label>Iм`я: *</label>
+          <input type="text" formControlName="name" (change)="tempFormValueRefresh()">
+          <div class="ui mini negative message" *ngIf="orderForm.get('name').hasError('required') && orderForm.get('name').touched">
+            Iм`я - обов`язкове поле
+          </div>
+        </div>
+        <div class="field">
+          <label>Місто доставки: *</label>
           <select class="ui fluid city search dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
             <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities">{{city.Description}}</option>
           </select>
           <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
                   <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>
               </select>-->
-          <br>
+          <div class="ui mini negative message" *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
+            Місто доставки - обов`язкове поле
+          </div>
           <input type="text" [hidden]="true" formControlName="address">
-          <label>Відділення:</label>
+        </div>
+        <div class="field">
+          <label>Відділення: *</label>
           <select class="ui fluid warehouse search dropdown" formControlName="warehouse" (change)="tempFormValueRefresh();">
             <option value="{{warehouse.Description}}" *ngFor="let warehouse of novaPoshtaWarehouses">{{warehouse.Description}}</option>
           </select>
+          <div class="ui mini negative message" *ngIf="orderForm.get('warehouse').hasError('required') && orderForm.get('warehouse').touched">
+            Відділення - обов`язкове поле
+          </div>
         </div>
       </div>
       <div style="background-color: #fafafa;" class="ui large raised segment">
@@ -116,24 +129,12 @@
           </div>
         </h1>
         <div class="field">
-          <button class="ui blue big button">
+          <button class="ui blue big button" [disabled]="!orderForm.valid">
             <i class="icon shop"></i>
             Замовити
           </button>
-          <div class="ui negative message" *ngIf="orderForm.get('phone').hasError('required')">
-            Phone is required
-          </div>
-          <div class="ui negative message" *ngIf="orderForm.get('name').hasError('required')">
-            Name is required
-          </div>
-          <div class="ui negative message" *ngIf="orderForm.get('surName').hasError('required')">
-            Surname is required
-          </div>
-          <div class="ui negative message" *ngIf="orderForm.get('address').hasError('required')">
-            Address is required
-          </div>
-          <div class="ui negative message" *ngIf="orderForm.get('warehouse').hasError('required')">
-            Warehouse is required
+          <div class="ui mini negative compact message" *ngIf="!orderForm.valid">
+            Заповніть обов`язкові поля щоб зробити замовлення
           </div>
         </div>
       </div>
@@ -161,7 +162,6 @@
   <div class="seven wide right aligned column">
     <div id="parent" class="ui raised segment" style="background-color: #fafafa;">
       <div *ngIf="product" class="ui fluid image">
-        <p>Form status: {{ orderForm.status | json }}</p>
         <img [src]="product.imgSrc" alt="" class="ui image">
       </div>
     </div>
