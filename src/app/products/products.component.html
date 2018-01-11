@@ -1,28 +1,26 @@
-<div class="container">
-  <div class="ui left aligned large raised segment" style="background-color: #eceff1;">
-    <h3 class="ui header">Ласкаво просимо!</h3>
-    <div class="ui list">
-      <div class="item">
-        Дізнавайтесь ціну друку поліграфічної продукції.
-      </div>
-      <div class="item">
-        Замовляйте в лічені секунди.
-      </div>
-      <div class="item">
-        Отримайте в будь-якому відділенні Нової Пошти.
-      </div>
+<div class="ui left aligned large raised segment container" style="background-color: #eceff1;">
+  <h3 class="ui header">Ласкаво просимо!</h3>
+  <div class="ui list">
+    <div class="item">
+      Дізнавайтесь ціну друку поліграфічної продукції.
     </div>
-    <p>
-      <i class="icon ordered list"></i>Зробіть п`ять простих кроків.</p>
-    <p>
-      <i class="icon green arrow down"></i>1. Оберіть потрібний товар.</p>
-    <div class="ui two columns stackable grid menu">
-      <div class="ui column item link" *ngFor='let product of products'>
-        <a [routerLink]="['/order-details/', product._id]">
-          <div class="ui top left big blue attached label">{{product.name}}</div>
-          <img [src]="product.imgSrc" alt="" class="ui image">
-        </a>
-      </div>
+    <div class="item">
+      Замовляйте в лічені секунди.
+    </div>
+    <div class="item">
+      Отримайте в будь-якому відділенні Нової Пошти.
+    </div>
+  </div>
+  <p>
+    <i class="icon ordered list"></i>Зробіть п`ять простих кроків.</p>
+  <p>
+    <i class="icon green arrow down"></i>1. Оберіть потрібний товар.</p>
+  <div class="ui two columns stackable grid menu">
+    <div class="ui column item link" *ngFor='let product of products'>
+      <a [routerLink]="['/order-details/', product._id]">
+        <div class="ui top left big blue attached label">{{product.name}}</div>
+        <img [src]="product.imgSrc" alt="" class="ui image">
+      </a>
     </div>
   </div>
 </div>
