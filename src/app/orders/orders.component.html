@@ -1,22 +1,32 @@
-<form class="row" (submit)="addOrder($event)">
-    <div class="form-group">
-        <input type="text" [(ngModel)]="product" name="product" class="form-control" placeholder="New Order">
-    </div>
-</form>
-
-<div class="row" *ngFor="let order of orders">
-    <div class="col-sm-1">
+<div *ngFor="let order of orders" class="ui large raised segment container stackable grid">
+    <!-- <div class="ui item link">
+            <a [routerLink]="['/orders-details/', order._id]">
+            
+            </a>
+        </div> -->
+    <div class="two wide column">
         {{order.price}}
     </div>
-    <div class="col-sm-4">
+    <div class="four wide column">
         {{order.product}}
     </div>
-    <div class="col-sm-4">
+    <div class="four wide column">
+        {{order.address}}
+    </div>
+    <div class="four wide column">
         {{order.amount}}
     </div>
-    <div class="col-sm-3">
+    <div class="two wide column">
         <input type="button" (click)="deleteOrder(order._id)" value="Delete" class="btn btn-danger">
     </div>
-    <br>
-    <br>
+</div>
+
+<div class="ui left aligned large raised segment container" style="background-color: #eceff1;">
+    <div class="ui stackable grid">
+        <div class="ui column link" *ngFor='let order of orders'>
+            <a [routerLink]="['/orders-details/', order._id]">
+                a
+            </a>
+        </div>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="ui stackable grid container">
-  <div class="nine wide column">
+  <div class="eight wide column">
     <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
       <div style="background-color: #fafafa;" class="ui large raised segment">
         <p>
@@ -176,7 +176,7 @@
                   </div>
                 </div> -->
   </div>
-  <div class="seven wide right aligned column">
+  <div class="eight wide right aligned column">
     <div class="ui raised segment" style="background-color: #fafafa;">
       <div *ngIf="product" class="ui fluid image">
         <img [src]="product.imgSrc" alt="" class="ui image">
