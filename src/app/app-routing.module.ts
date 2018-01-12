@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProductsComponent } from './products/products.component';
 import { OrdersComponent } from './orders/orders.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'products', pathMatch: 'full' },
     { path: 'products', component: ProductsComponent },
-    { path: 'order-details/:id', component: OrderDetailsComponent },
+    { path: 'order-form/:id', component: OrderFormComponent },
     { path: 'orders', component: OrdersComponent }
 ];
 

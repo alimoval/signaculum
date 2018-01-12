@@ -15,11 +15,11 @@ import { NovaPoshtaService } from '../nova-poshta.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css']
+  selector: 'order-form',
+  templateUrl: './order-form.component.html',
+  styleUrls: ['./order-form.component.css']
 })
-export class OrderDetailsComponent implements OnInit {
+export class OrderFormComponent implements OnInit {
 
   public orderForm: FormGroup;
   public product: Product;

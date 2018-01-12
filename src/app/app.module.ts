@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ProductsComponent } from './products/products.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { OrderFormComponent } from './order-form/order-form.component';
 
 import { NovaPoshtaService } from './nova-poshta.service';
 import { OrderService } from './order.service';
@@ -20,7 +20,7 @@ import { ProductService } from './product.service';
     AppComponent,
     OrdersComponent,
     ProductsComponent,
-    OrderDetailsComponent
+    OrderFormComponent
   ],
   imports: [
     BrowserModule,

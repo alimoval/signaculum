@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   getProduct(id: string) {
-    return this._http.get('http://localhost:3000/order-details/' + id)
+    return this._http.get('http://localhost:3000/order-form/' + id)
       .map(res => res.json() as Product);
   }
 
