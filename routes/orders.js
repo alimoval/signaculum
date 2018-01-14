@@ -14,7 +14,7 @@ router.get('/orders', function (req, res, next) {
 });
 
 //Get Single Order
-router.get('/order/:id', function (req, res, next) {
+router.get('/order-details/:id', function (req, res, next) {
     db.orders.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, order) {
         if (err) {
             res.send(err);

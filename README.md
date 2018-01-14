@@ -4,3 +4,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 MongoDB, Express, Angular 2 & NodeJS application. 
 
+Version 1.0.1-beta

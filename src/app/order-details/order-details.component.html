@@ -1,0 +1,19 @@
+<div *ngIf="order" class="ui left aligned large raised segment container" style="background-color: #fafafa;">
+  <div class="ui stackable grid">
+    <div class="two wide column">
+      {{order.price}}
+    </div>
+    <div class="four wide column">
+      {{order.product}}
+    </div>
+    <div class="four wide column">
+      {{order.address}}
+    </div>
+    <div class="four wide column">
+      {{order.amount}}
+    </div>
+    <div class="two wide column">
+      <input type="button" (click)="deleteOrder(order._id)" value="Delete" class="ui button inverted negative">
+    </div>
+  </div>
+</div>

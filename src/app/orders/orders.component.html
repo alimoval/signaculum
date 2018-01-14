@@ -1,5 +1,5 @@
 <div *ngFor='let order of orders' class="ui left aligned large raised segment container" style="background-color: #fafafa;">
-    <a [routerLink]="['/orders-details/', order._id]">
+    <a [routerLink]="['/order-details/', order._id]">
         <div class="ui stackable grid link">
             <div class="two wide column">
                 {{order.price}}

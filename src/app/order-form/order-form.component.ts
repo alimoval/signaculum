@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -34,7 +33,6 @@ export class OrderFormComponent implements OnInit {
   public purchaseFlag = false;
 
   constructor(
-    private _http: Http,
     private _novaPoshtaService: NovaPoshtaService,
     private _orderService: OrderService,
     private _productService: ProductService,

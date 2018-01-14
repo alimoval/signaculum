@@ -12,6 +12,11 @@ export class OrderService {
       .map(res => res.json());
   }
 
+  getOrder(id: string) {
+    return this._http.get('http://localhost:3000/api/order-details/' + id)
+      .map(res => res.json() as Order);
+  }
+
   addOrder(newOrder) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

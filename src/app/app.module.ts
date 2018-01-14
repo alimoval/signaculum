@@ -14,13 +14,15 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { NovaPoshtaService } from './nova-poshta.service';
 import { OrderService } from './order.service';
 import { ProductService } from './product.service';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrdersComponent,
     ProductsComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
