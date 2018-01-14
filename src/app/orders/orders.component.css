@@ -1,0 +1,4 @@
+.ui.stackable.grid.link>.wide.column {
+    padding: 0.1rem 1rem !important;
+    vertical-align: bottom !important;
+}
