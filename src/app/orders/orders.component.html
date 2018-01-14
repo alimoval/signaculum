@@ -4,17 +4,17 @@
             <div class="two wide column">
                 {{order.price}}
             </div>
-            <div class="four wide column">
+            <div class="three wide column">
                 {{order.product}}
+            </div>
+            <div class="three wide column">
+                {{order.amount}}
             </div>
             <div class="four wide column">
                 {{order.address}}
             </div>
             <div class="four wide column">
-                {{order.amount}}
-            </div>
-            <div class="two wide column">
-                <input type="button" (click)="deleteOrder(order._id)" value="Delete" class="ui button inverted negative">
+                {{order.name}} 
             </div>
         </div>
     </a>
