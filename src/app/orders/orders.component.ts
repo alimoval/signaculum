@@ -35,19 +35,19 @@ export class OrdersComponent implements OnInit {
       });
   }
 
-  deleteOrder(id) {
-    const orders = this.orders;
-    this._orderService.deleteOrder(id)
-      .subscribe(data => {
-        if (data.n === 1) {
-          for (let i = 0; i < orders.length; i++) {
-            if (orders[i]._id === id) {
-              orders.splice(i, 1);
-            }
-          }
-        }
-      });
-  }
+  // deleteOrder(id) {
+  //   const orders = this.orders;
+  //   this._orderService.deleteOrder(id)
+  //     .subscribe(data => {
+  //       if (data.n === 1) {
+  //         for (let i = 0; i < orders.length; i++) {
+  //           if (orders[i]._id === id) {
+  //             orders.splice(i, 1);
+  //           }
+  //         }
+  //       }
+  //     });
+  // }
 
   ngOnInit() {
     this.getOrders();
