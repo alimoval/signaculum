@@ -8,12 +8,12 @@ export class OrderService {
   constructor(private _http: Http) { }
 
   getOrders() {
-    return this._http.get('http://localhost:3000/api/orders')
+    return this._http.get('/api/orders')
       .map(res => res.json());
   }
 
   getOrder(id: string) {
-    return this._http.get('http://localhost:3000/api/order-details/' + id)
+    return this._http.get('/api/order-details/' + id)
       .map(res => res.json() as Order);
   }
 
