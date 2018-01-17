@@ -16,7 +16,6 @@ export class OrderDetailsComponent implements OnInit {
   public order: Order;
   public router: Router;
 
-
   constructor(
     private _orderService: OrderService,
     private _route: ActivatedRoute,

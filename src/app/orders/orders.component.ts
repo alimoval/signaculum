@@ -12,7 +12,6 @@ export class OrdersComponent implements OnInit {
 
   public orders: Order[];
   public product: string;
-  public size: string;
 
   constructor(private _orderService: OrderService) { }
 
@@ -23,17 +22,17 @@ export class OrdersComponent implements OnInit {
       });
   }
 
-  addOrder(event) {
-    event.preventDefault();
-    const newOrder = {
-      product: this.product
-    };
-    this._orderService.addOrder(newOrder)
-      .subscribe(order => {
-        this.orders.push(order);
-        this.product = '';
-      });
-  }
+  // addOrder(event) {
+  //   event.preventDefault();
+  //   const newOrder = {
+  //     product: this.product
+  //   };
+  //   this._orderService.addOrder(newOrder)
+  //     .subscribe(order => {
+  //       this.orders.push(order);
+  //       this.product = '';
+  //     });
+  // }
 
   // deleteOrder(id) {
   //   const orders = this.orders;

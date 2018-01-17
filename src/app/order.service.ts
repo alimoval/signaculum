@@ -20,12 +20,12 @@ export class OrderService {
   addOrder(newOrder) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('http://localhost:3000/api/order', newOrder, { headers: headers })
+    return this._http.post('/api/order', newOrder, { headers: headers })
       .map(res => res.json());
   }
 
   deleteOrder(id) {
-    return this._http.delete('http://localhost:3000/api/order/' + id)
+    return this._http.delete('/api/order/' + id)
       .map(res => res.json());
   }
 

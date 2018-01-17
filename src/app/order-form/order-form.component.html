@@ -149,7 +149,7 @@
             <p> Для запуску друку зробіть оплату {{price}} грн. на рахунок 4731217105055709.</p>
             <p> У разі сплати через Приват24, обов`язково в коментарях до платежа вкажіть номер телефону, який ви вказали у замовленні
               {{orderForm.get('phone').value}}. В іншому випадку зателефонуйте щоб нічого не сплуталось. </p>
-            <div class="ui green ok inverted button">
+            <div class="ui green ok inverted button" (click)="returnToProductsList()">
               <i class="checkmark icon"></i> Добре, йду до банку
             </div>
           </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -20,6 +20,7 @@ import { NovaPoshtaService } from '../nova-poshta.service';
 })
 export class OrderFormComponent implements OnInit {
 
+  public router: Router;
   public orderForm: FormGroup;
   public product: Product;
   public price = 0;
@@ -32,13 +33,17 @@ export class OrderFormComponent implements OnInit {
   public showEmailInputFlag = false;
   public purchaseFlag = false;
 
+
   constructor(
     private _novaPoshtaService: NovaPoshtaService,
     private _orderService: OrderService,
     private _productService: ProductService,
     private _route: ActivatedRoute,
+    private _router: Router,
     private _fb: FormBuilder
-  ) { }
+  ) {
+    this.router = _router;
+  }
 
   // Get Order Product
   getProduct() {
@@ -146,6 +151,10 @@ export class OrderFormComponent implements OnInit {
   onSubmit(orderForm): void {
     this.addOrder(orderForm.value);
     this.purchaseFlag = true;
+  }
+
+  returnToProductsList() {
+    this.router.navigate(['./products', {}]);
   }
 
   designUpload() {
