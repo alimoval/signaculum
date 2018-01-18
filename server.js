@@ -30,6 +30,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', index);
+app.use('/products', index)
 app.use('/api', apiHandler);
 
 app.listen(process.env.PORT || 3000, function () {
