@@ -5,8 +5,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var products = require('./routes/products');
 var orders = require('./routes/orders');
-
-var port = 3000;
+var apiHandler = require('./routes/apiHandler');
 
 var app = express();
 
@@ -30,8 +29,8 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', products);
-app.use('/api', orders);
+app.use('/', index);
+app.use('/api', apiHandler);
 
 app.listen(process.env.PORT || 3000, function () {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
