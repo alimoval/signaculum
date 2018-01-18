@@ -10,12 +10,12 @@ export class ProductService {
   constructor(private _http: Http) { }
 
   getProducts() {
-    return this._http.get('/products')
+    return this._http.get('http://localhost:3000/products')
       .map(res => res.json() as Product[]);
   }
 
   getProduct(id: string) {
-    return this._http.get('/order-form/' + id)
+    return this._http.get('http://localhost:3000/order-form/' + id)
       .map(res => res.json() as Product);
   }
 

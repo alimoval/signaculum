@@ -35,7 +35,7 @@ export class OrderDetailsComponent implements OnInit {
   deleteOrder(id) {
     this._orderService.deleteOrder(id)
       .subscribe(data => {
-        this.router.navigate(['./orders', { param: 3 }]);
+        this.router.navigate(['./orders', {}]);
       });
   }
 
