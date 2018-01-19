@@ -8,24 +8,24 @@ export class OrderService {
   constructor(private _http: Http) { }
 
   getOrders() {
-    return this._http.get('/api/orders')
+    return this._http.get('http://localhost:3000/api/orders')
       .map(res => res.json());
   }
 
   getOrder(id: string) {
-    return this._http.get('/api/order-details/' + id)
+    return this._http.get('http://localhost:3000/api/order-details/' + id)
       .map(res => res.json() as Order);
   }
 
   addOrder(newOrder) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('/api/order', newOrder, { headers: headers })
+    return this._http.post('http://localhost:3000/api/order', newOrder, { headers: headers })
       .map(res => res.json());
   }
 
   deleteOrder(id) {
-    return this._http.delete('/api/order/' + id)
+    return this._http.delete('http://localhost:3000/api/order/' + id)
       .map(res => res.json());
   }
 
