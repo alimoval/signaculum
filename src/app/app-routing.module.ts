@@ -7,7 +7,7 @@ import { OrderFormComponent } from './order-form/order-form.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
-    { path: '', redirectTo: 'products', pathMatch: 'full' },
+    { path: '', component: ProductsComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'order-form/:id', component: OrderFormComponent },
     { path: 'orders', component: OrdersComponent },
