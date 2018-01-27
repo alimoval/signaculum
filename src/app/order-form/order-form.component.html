@@ -2,13 +2,14 @@
   <div class="eight wide column">
     <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
       <div style="background-color: #fafafa;" class="ui large raised segment">
-        <p>
+        <div class="ui raised large segment">
           <i class="icon green shop"></i>
-          <i class="icon green gift"></i> 2. Дізнайтесь ціну і подарунок.</p>
+          <i class="icon green gift"></i> 2. Дізнайтесь ціну і подарунок.
+        </div>
         <p>Логотип нагорі завжди поверне до меню товарів.
           <i class="icon blue arrow up"></i>
         </p>
-        <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну моментально. </p>
+        <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну. </p>
         <div class="field">
           <label>Розмір:</label>
           <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
@@ -50,22 +51,24 @@
                           </div>
                       </div> -->
       <div style="background-color: #fafafa;" class="ui large raised segment">
-        <p>
-          <i class="icon green image"></i> 3. Завантажте або замовте макет.</p>
+        <div class="ui raised large segment">
+          <i class="icon green image"></i> 3. Завантажте або замовте макет.
+        </div>
         <div class="field">
-          <button class="ui basic black button" (click)="designUpload()">
+          <label>Якщо у вас вже є готовий макет:</label>
+          <button class="ui blue button" (click)="designUpload()">
             <i class="upload icon"></i>
             Завантажити файл
           </button>
           <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
         </div>
         <div class="field">
-          <label>Або вкажіть адресу до свого файлу:</label>
+          <label>Якщо ви загрузили свій макет до віртуального носія:</label>
           <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
         </div>
         <div class="field">
-          <label>Або просто опішіть словами яким ви бачите макет свого товару. Вкажіть свої деталі (тексти, список послуг, телефонні
-            номери). Щоб зробити ваш макет швидко, важливо мати чітке технічне завдання (ТЗ).</label>
+          <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть свій текст, список послуг,
+            телефони, будь-що. Щоб зробити ваш макет швидко, нам важливо мати більше інформації та чітке завдання.</label>
           <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
             rows="5" formControlName="description" (input)="showEmailInput();">
                                   </textarea>
@@ -76,9 +79,10 @@
         </div>
       </div>
       <div style="background-color: #fafafa;" class="ui large raised segment">
+        <div class="ui raised large segment">
+          <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
+        </div>
         <div class="field">
-          <p>
-            <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою</p>
           <label>Номер телефону: *</label>
           <input type="text" formControlName="phone" (change)="searchByPhone()">
         </div>
@@ -133,6 +137,7 @@
             <i class="icon shop"></i>
             Замовити
           </button>
+          <br>
           <div class="ui mini negative compact message" *ngIf="!orderForm.valid">
             Заповніть обов`язкові поля щоб зробити замовлення
           </div>
