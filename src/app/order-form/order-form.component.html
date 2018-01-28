@@ -54,6 +54,7 @@
         <div class="ui raised large segment">
           <i class="icon green image"></i> 3. Завантажте або замовте макет.
         </div>
+        <p>Заповніть хоч одне поле в цьому блоці.</p>
         <div class="field">
           <label>Якщо у вас вже є готовий макет:</label>
           <button class="ui blue button" (click)="designUpload()">
@@ -63,12 +64,14 @@
           <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
         </div>
         <div class="field">
-          <label>Якщо ви загрузили свій макет до віртуального носія:</label>
+          <label>Якщо ви завантажили свій макет до віртуального носія і у вас є посилання:</label>
           <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
         </div>
         <div class="field">
           <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть свій текст, список послуг,
-            телефони, будь-що. Щоб зробити ваш макет швидко, нам важливо мати більше інформації та чітке завдання.</label>
+            телефони, напишіть будь-який коментар. Щоб зробити ваш макет швидко, нам важливо мати більше інформації та чітке
+            завдання.
+          </label>
           <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
             rows="5" formControlName="description" (input)="showEmailInput();">
                                   </textarea>
@@ -149,11 +152,13 @@
                 Ваше замовлення зафiксовано.
               </div>
             </h2>
-            <p>
-              <i class="green payment icon"></i> 5. Оплата.</p>
+            <div class="ui raised large segment">
+              <i class="green payment icon"></i> 5. Оплата.
+            </div>
+            <p>Це останній крок. Ми розуміємо він найважливіший.</p>
             <p> Для запуску друку зробіть оплату {{price}} грн. на рахунок 4731217105055709.</p>
-            <p> У разі сплати через Приват24, обов`язково в коментарях до платежа вкажіть номер телефону, який ви вказали у замовленні
-              {{orderForm.get('phone').value}}. В іншому випадку зателефонуйте щоб нічого не сплуталось. </p>
+            <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону {{orderForm.get('phone').value}}.
+              В іншому випадку зателефонуйте 0734013733, щоб нічого не наплуталось.</p>
             <div class="ui green ok inverted button" (click)="returnToProductsList()">
               <i class="checkmark icon"></i> Добре, йду до банку
             </div>

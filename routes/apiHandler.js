@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://alik:alik@ds161346.mlab.com:61346/signaculum')
+var db = mongojs('mongodb://alik:alik@ds161346.mlab.com:61346/signaculum');
 
 //Get All Orders
 router.get('/orders', function (req, res, next) {
@@ -26,7 +26,7 @@ router.get('/order-details/:id', function (req, res, next) {
 //Save Order
 router.post('/order', function (req, res, next) {
     var order = req.body;
-    // console.log('backend:' + order);
+
     //Verify
     if (!order) {
         res.status(400);
@@ -41,7 +41,7 @@ router.post('/order', function (req, res, next) {
             res.json(order);
         });
     }
-})
+});
 
 //Delete Order
 router.delete('/order/:id', function (req, res, next) {
