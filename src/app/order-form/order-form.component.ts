@@ -154,7 +154,7 @@ export class OrderFormComponent implements OnInit {
   }
 
   returnToProductsList() {
-    this.router.navigate(['./products', {}]);
+    this.router.navigate(['/']);
   }
 
   designUpload() {
