@@ -4,23 +4,23 @@ const db = mongojs('mongodb://alik:alik@ds161346.mlab.com:61346/signaculum');
 
 const User = module.exports;
 
-module.exports.getUserById = function (id, callback) {
-    User.findById(id, callback);
-};
-
-module.exports.getUserByUsername = function (username, callback) {
-    const query = { username: username };
-    db.users.findOne(query, callback);
-};
-
 module.exports.addUser = function (newUser, callback) {
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
-            newUser.save(callback);
+            db.users.save(newUser, callback);
         });
     });
+};
+
+module.exports.getUserById = function (id, callback) {
+    db.users.findOne({ _id: mongojs.ObjectId(id) }, callback);
+};
+
+module.exports.getUserByUsername = function (username, callback) {
+    let query = { username: username };
+    db.users.findOne(query, callback);
 };
 
 module.exports.comparePassword = function (candidatePassword, hash, callback) {

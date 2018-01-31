@@ -3,9 +3,9 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 
+const config = require('../config/database');
+
 const User = require('../models/user');
-const mongojs = require('mongojs');
-const db = mongojs('mongodb://alik:alik@ds161346.mlab.com:61346/signaculum');
 
 // Register
 router.post('/register', (req, res, next) => {
@@ -18,7 +18,7 @@ router.post('/register', (req, res, next) => {
             "error": "Bad Data"
         });
     } else {
-        db.users.save(newUser, function (err, user) {
+        User.addUser(newUser, function (err, user) {
             if (err) {
                 res.json({ success: false, msg: 'Failes to register new User' });
             } else {
@@ -33,7 +33,7 @@ router.post('/authenticate', (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    db.users.getUserByUsername(username, (err, user) => {
+    User.getUserByUsername(username, (err, user) => {
         if (err) throw err;
         if (!user) {
             return res.json({ success: false, msg: 'User not found' });
@@ -41,7 +41,7 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-                const token = jwt.sign(user.toJSON(), config.secret, {
+                const token = jwt.sign(user, config.secret, {
                     expiresIn: 604800 // 1 week
                 });
 
@@ -63,8 +63,8 @@ router.post('/authenticate', (req, res, next) => {
 });
 
 // Profile
-// router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
-//     res.json({ user: req.user });
-// });
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res, next) => {
+    res.json({ user: req.user });
+});
 
 module.exports = router;
