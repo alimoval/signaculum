@@ -7,14 +7,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { OrdersComponent } from './orders/orders.component';
-import { ProductsComponent } from './products/products.component';
-import { OrderFormComponent } from './order-form/order-form.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { ProductsComponent } from './components/products/products.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
-import { NovaPoshtaService } from './nova-poshta.service';
-import { OrderService } from './order.service';
-import { ProductService } from './product.service';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { NovaPoshtaService } from './services/nova-poshta.service';
+import { OrderService } from './services/order.service';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
