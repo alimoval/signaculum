@@ -16,13 +16,16 @@ import { NovaPoshtaService } from './services/nova-poshta.service';
 import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 
+import { CitySearchPipe } from './pipes/city-search.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     OrdersComponent,
     ProductsComponent,
     OrderFormComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CitySearchPipe,
   ],
   imports: [
     BrowserModule,
