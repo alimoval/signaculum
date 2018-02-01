@@ -3,8 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
-import { OrderService } from '../order.service';
-import { Order } from '../../Order';
+import { OrderService } from '../../services/order.service';
+import { Order } from '../../../Order';
 
 @Component({
   selector: 'order-details',
@@ -35,7 +35,7 @@ export class OrderDetailsComponent implements OnInit {
   deleteOrder(id) {
     this._orderService.deleteOrder(id)
       .subscribe(data => {
-        this.router.navigate(['./orders', {}]);
+        this.router.navigate(['./orders']);
       });
   }
 

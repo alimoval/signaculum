@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 
-import { OrderService } from '../order.service';
-import { Order } from '../../Order';
-import { ProductService } from '../product.service';
-import { Product } from '../../Product';
-import { NovaPoshtaService } from '../nova-poshta.service';
+import { OrderService } from '../../services/order.service';
+import { Order } from '../../../Order';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../../Product';
+import { NovaPoshtaService } from '../../services/nova-poshta.service';
 
 @Component({
   // tslint:disable-next-line:component-selector

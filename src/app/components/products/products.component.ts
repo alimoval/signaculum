@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
-import { Product } from '../../Product';
+import { ProductService } from '../../services/product.service';
+import { Product } from '../../../Product';
 
 @Component({
   // tslint:disable-next-line:component-selector

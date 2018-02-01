@@ -108,8 +108,9 @@
         </div>
         <div class="field">
           <label>Місто доставки: *</label>
-          <select class="ui fluid city search dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
-            <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities">{{city.Description}}</option>
+          <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
+          <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
+            <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">{{city.Description}}</option>
           </select>
           <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
                               <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>

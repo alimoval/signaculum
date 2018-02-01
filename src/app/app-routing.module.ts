@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProductsComponent } from './products/products.component';
-import { OrdersComponent } from './orders/orders.component';
-import { OrderFormComponent } from './order-form/order-form.component';
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { ProductsComponent } from './components/products/products.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OrderFormComponent } from './components/order-form/order-form.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 const routes: Routes = [
     { path: '', component: ProductsComponent },
