@@ -5,10 +5,14 @@ import { ProductsComponent } from './components/products/products.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
     { path: '', component: ProductsComponent },
     { path: 'products', component: ProductsComponent },
+    { path: 'register', component: RegisterComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'order-form/:id', component: OrderFormComponent },
     { path: 'orders', component: OrdersComponent },
     { path: 'order-details/:id', component: OrderDetailsComponent }

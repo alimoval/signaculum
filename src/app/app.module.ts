@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,6 +16,10 @@ import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 
 import { CitySearchPipe } from './pipes/city-search.pipe';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,10 @@ import { CitySearchPipe } from './pipes/city-search.pipe';
     OrderFormComponent,
     OrderDetailsComponent,
     CitySearchPipe,
+    NavbarComponent,
+    FooterComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
