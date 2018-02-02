@@ -14,6 +14,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { NovaPoshtaService } from './services/nova-poshta.service';
 import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
+import { AuthService } from './services/auth.service';
 
 import { CitySearchPipe } from './pipes/city-search.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -44,7 +45,8 @@ import { LoginComponent } from './components/login/login.component';
   providers: [
     OrderService,
     ProductService,
-    NovaPoshtaService
+    NovaPoshtaService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
