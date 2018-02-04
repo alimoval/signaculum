@@ -18,8 +18,8 @@ module.exports.getUserById = function (id, callback) {
     db.users.findOne({ _id: mongojs.ObjectId(id) }, callback);
 };
 
-module.exports.getUserByUsername = function (username, callback) {
-    let query = { username: username };
+module.exports.getUserByEmail = function (email, callback) {
+    let query = { email: email };
     db.users.findOne(query, callback);
 };
 
