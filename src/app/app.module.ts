@@ -15,6 +15,7 @@ import { NovaPoshtaService } from './services/nova-poshta.service';
 import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { CitySearchPipe } from './pipes/city-search.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -40,7 +41,8 @@ import { LoginComponent } from './components/login/login.component';
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [
     OrderService,
