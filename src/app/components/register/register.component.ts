@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
