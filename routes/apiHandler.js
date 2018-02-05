@@ -2,9 +2,10 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://alik:alik@ds161346.mlab.com:61346/signaculum');
+const passport = require('passport');
 
 //Get All Orders
-router.get('/orders', function (req, res, next) {
+router.get('/orders', passport.authenticate('jwt', { session: false }), function (req, res, next) {
     db.orders.find(function (err, orders) {
         if (err) {
             res.send(err);

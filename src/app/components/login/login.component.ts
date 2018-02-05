@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthService,
     private _router: Router,
-    private _flashMessagesService: FlashMessagesService
+    private _flashMessagesService: FlashMessagesService,
   ) { }
 
   createForm() {
@@ -30,11 +30,12 @@ export class LoginComponent implements OnInit {
   onLoginSubmit(loginFormData) {
 
     this._authService.authenticateUser(loginFormData.value).subscribe(data => {
-      console.log(data);
       if (data.success) {
+        this._flashMessagesService.show('You are now logged in.', { cssClass: 'ui green success big message', timeout: 5000 });
+        this._authService.storeUserData(data.token, data.user);
         this._router.navigate(['/orders']);
       } else {
-        this._flashMessagesService.show(data.msg, { cssClass: 'alert-danger', timeout: 5000 });
+        this._flashMessagesService.show(data.msg, { cssClass: 'ui negative big message', timeout: 5000 });
         this._router.navigate(['/login']);
       }
     });

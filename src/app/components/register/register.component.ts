@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthService,
     private _router: Router,
-    private _flashMessagesService: FlashMessagesService
+    private _flashMessagesService: FlashMessagesService,
   ) { }
 
   createForm() {
@@ -32,10 +32,10 @@ export class RegisterComponent implements OnInit {
   registerUser(user) {
     this._authService.registerUser(user).subscribe(data => {
       if (data.success) {
-        this._flashMessagesService.show('You are now registered and can login', { cssClass: 'alert-success', timeout: 5000 });
+        this._flashMessagesService.show('User is now registered.', { cssClass: 'ui green success big message', timeout: 5000 });
         this._router.navigate(['/login']);
       } else {
-        this._flashMessagesService.show('Something went wrong', { cssClass: 'alert-danger', timeout: 5000 });
+        this._flashMessagesService.show(data.msg, { cssClass: 'ui negative big message', timeout: 5000 });
         this._router.navigate(['/register']);
       }
     });

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
 import { Order } from '../../../Order';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -13,10 +15,14 @@ export class OrdersComponent implements OnInit {
   public orders: Order[];
   public product: string;
 
-  constructor(private _orderService: OrderService) { }
+  constructor(
+    private _orderService: OrderService,
+    private _authService: AuthService,
+    private _router: Router,
+  ) { }
 
   getOrders() {
-    this._orderService.getOrders()
+    this._authService.getOrders()
       .subscribe(orders => {
         this.orders = orders;
       });

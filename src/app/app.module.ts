@@ -10,6 +10,11 @@ import { OrdersComponent } from './components/orders/orders.component';
 import { ProductsComponent } from './components/products/products.component';
 import { OrderFormComponent } from './components/order-form/order-form.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 import { NovaPoshtaService } from './services/nova-poshta.service';
 import { OrderService } from './services/order.service';
@@ -18,10 +23,7 @@ import { AuthService } from './services/auth.service';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { CitySearchPipe } from './pipes/city-search.pipe';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { LoginComponent } from './components/login/login.component';
     FooterComponent,
     RegisterComponent,
     LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,13 +45,13 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
   ],
   providers: [
     OrderService,
     ProductService,
     NovaPoshtaService,
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

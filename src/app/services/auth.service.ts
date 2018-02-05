@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class AuthService {
-  authtoken: any;
+  authToken: any;
   user: any;
 
   constructor(private _http: Http) { }
@@ -23,4 +23,39 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  getOrders() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this._http.get('http://localhost:3000/api/orders', { headers: headers })
+      .map(res => res.json());
+  }
+
+  getProfile() {
+    let headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this._http.get('http://localhost:3000/users/profile', { headers: headers })
+      .map(res => res.json());
+  }
+
+  storeUserData(token, user) {
+    localStorage.setItem('id_token', token);
+    localStorage.setItem('user', JSON.stringify(user));
+    this.authToken = token;
+    this.user = user;
+  }
+
+  loadToken() {
+    const token = localStorage.getItem('id_token');
+    this.authToken = token;
+  }
+
+  logOut() {
+    this.authToken = null;
+    this.user = null;
+    localStorage.clear();
+  }
 }
