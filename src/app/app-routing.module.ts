@@ -8,16 +8,17 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
     { path: '', component: ProductsComponent },
     { path: 'products', component: ProductsComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'login', component: LoginComponent },
-    { path: 'users/profile', component: ProfileComponent },
+    { path: 'users/profile', component: ProfileComponent, canActivate: [AuthGuard] },
     { path: 'order-form/:id', component: OrderFormComponent },
-    { path: 'orders', component: OrdersComponent },
-    { path: 'order-details/:id', component: OrderDetailsComponent }
+    { path: 'orders', component: OrdersComponent, canActivate: [AuthGuard] },
+    { path: 'order-details/:id', component: OrderDetailsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

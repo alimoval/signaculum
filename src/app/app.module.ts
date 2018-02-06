@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { OrdersComponent } from './components/orders/orders.component';
@@ -52,6 +53,7 @@ import { CitySearchPipe } from './pipes/city-search.pipe';
     ProductService,
     NovaPoshtaService,
     AuthService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
