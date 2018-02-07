@@ -13,7 +13,7 @@ export class NavbarComponent implements OnInit {
   title = 'Signaculum';
 
   constructor(
-    private _authService: AuthService,
+    public authService: AuthService,
     private _router: Router,
     private _flashMessagesService: FlashMessagesService,
   ) { }
@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onLogoutClick() {
-    this._authService.logOut();
+    this.authService.logOut();
     this._flashMessagesService.show('You are logged out.', { cssClass: 'ui green success big message', timeout: 5000 });
     this._router.navigate(['/login']);
     return false;

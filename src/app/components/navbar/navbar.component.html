@@ -1,7 +1,6 @@
 <div class="ui grid menu container" style="background-color: #37474f;">
 
-  <div routerLink="/" class="twelve wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-    true}">
+  <div routerLink="/" class="twelve wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
     <h2 class="ui inverted header">
       <i class="print blue icon"></i> {{title}}
     </h2>
@@ -9,33 +8,30 @@
 
   <div class="ui four wide column item stackable grid">
 
-    <div *ngIf="_authService.loggedIn()" routerLink="/orders" class="six wide right aligned column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-          true}">
+    <div *ngIf="authService.loggedIn()" routerLink="/orders" class="six wide right aligned column item link" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Orders
       </p>
     </div>
-    <div *ngIf="_authService.loggedIn()" routerLink="/users/profile" class="six wide right aligned column item link" routerLinkActive="active"
-      [routerLinkActiveOptions]="{exact:
-          true}">
+    <div *ngIf="authService.loggedIn()" routerLink="/users/profile" class="six wide right aligned column item link" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Profile
       </p>
     </div>
-    <div *ngIf="!_authService.loggedIn()" routerLink="/register" class="eight wide column item link" routerLinkActive="active"
-      [routerLinkActiveOptions]="{exact:
-          true}">
+    <div *ngIf="!authService.loggedIn()" routerLink="/register" class="eight wide column item link" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Sign Up
       </p>
     </div>
-    <div *ngIf="!_authService.loggedIn()" routerLink="/login" class="eight wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
-          true}">
+    <div *ngIf="!authService.loggedIn()" routerLink="/login" class="eight wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Log In
       </p>
     </div>
-    <div *ngIf="_authService.loggedIn()" (click)="onLogoutClick()" class="four wide right aligned column item link">
+    <div *ngIf="authService.loggedIn()" (click)="onLogoutClick()" class="four wide right aligned column item link">
       <p class="ui inverted tiny header">
         Log Out
       </p>
