@@ -8,30 +8,30 @@
 
   <div class="ui four wide column item stackable grid">
 
-    <div *ngIf="authService.loggedIn()" routerLink="/orders" class="six wide right aligned column item link" routerLinkActive="active"
+    <div *ngIf="authService.loggedIn()" routerLink="/orders" class="four wide column item link" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Orders
       </p>
     </div>
-    <div *ngIf="authService.loggedIn()" routerLink="/users/profile" class="six wide right aligned column item link" routerLinkActive="active"
+    <div *ngIf="authService.loggedIn()" routerLink="/users/profile" class="four wide column item link" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Profile
       </p>
     </div>
-    <div *ngIf="!authService.loggedIn()" routerLink="/register" class="eight wide column item link" routerLinkActive="active"
+    <div *ngIf="authService.loggedIn()" routerLink="/register" class="four wide column item link" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact:true}">
       <p class="ui inverted tiny header">
         Sign Up
       </p>
     </div>
-    <div *ngIf="!authService.loggedIn()" routerLink="/login" class="eight wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
-      <p class="ui inverted tiny header">
+    <div *ngIf="!authService.loggedIn()" routerLink="/login" class="sixteen wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+      <p class="ui right aligned inverted tiny header">
         Log In
       </p>
     </div>
-    <div *ngIf="authService.loggedIn()" (click)="onLogoutClick()" class="four wide right aligned column item link">
+    <div *ngIf="authService.loggedIn()" (click)="onLogoutClick()" class="four wide column item link">
       <p class="ui inverted tiny header">
         Log Out
       </p>
