@@ -11,21 +11,21 @@ export class AuthService {
   constructor(private _http: Http) { }
 
   registerUser(user) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.post('/users/register', user, { headers: headers })
       .map(res => res.json());
   }
 
   authenticateUser(user) {
-    let headers = new Headers();
+    const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this._http.post('/users/authenticate', user, { headers: headers })
       .map(res => res.json());
   }
 
   getOrders() {
-    let headers = new Headers();
+    const headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   getProfile() {
-    let headers = new Headers();
+    const headers = new Headers();
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
