@@ -31,6 +31,7 @@ export class OrderFormComponent implements OnInit {
   public orderAmount: string;
   public showEmailInputFlag = false;
   public purchaseFlag = false;
+  public query: String;
 
 
   constructor(
