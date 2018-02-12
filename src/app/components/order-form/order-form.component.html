@@ -1,8 +1,8 @@
 <div class="ui stackable grid container">
   <div class="eight wide column">
     <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
-      <div style="background-color: #fafafa;" class="ui large raised segment">
-        <div class="ui raised large segment">
+      <div style="background-color: #fafafa;" class="ui big raised segment">
+        <div class="ui raised big segment">
           <i class="icon green shop"></i>
           <i class="icon green gift"></i> 2. Дізнайтесь ціну і подарунок.
         </div>
@@ -50,8 +50,8 @@
                               <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
                           </div>
                       </div> -->
-      <div style="background-color: #fafafa;" class="ui large raised segment">
-        <div class="ui raised large segment">
+      <div style="background-color: #fafafa;" class="ui big raised segment">
+        <div class="ui raised big segment">
           <i class="icon green image"></i> 3. Завантажте або замовте макет.
         </div>
         <p>Заповніть хоч одне поле в цьому блоці.</p>
@@ -68,9 +68,8 @@
           <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
         </div>
         <div class="field">
-          <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть свій текст, список послуг,
-            телефони, напишіть будь-який коментар. Щоб зробити ваш макет швидко, нам важливо мати більше інформації та чітке
-            завдання.
+          <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть текст, список послуг, телефони,
+            напишіть будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації та чітке завдання.
           </label>
           <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
             rows="5" formControlName="description" (input)="showEmailInput();">
@@ -81,8 +80,8 @@
           <input type="text" formControlName="email" (change)="tempFormValueRefresh()">
         </div>
       </div>
-      <div style="background-color: #fafafa;" class="ui large raised segment">
-        <div class="ui raised large segment">
+      <div style="background-color: #fafafa;" class="ui big raised segment">
+        <div class="ui raised big segment">
           <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
         </div>
         <div class="field">
@@ -108,7 +107,7 @@
         </div>
         <div class="field">
           <label>Місто доставки: *</label>
-          <div class="ui label">
+          <div class="ui blue label">
             (пошук українською)
           </div>
           <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
@@ -133,38 +132,68 @@
           </div>
         </div>
       </div>
-      <div style="background-color: #fafafa;" class="ui large raised segment">
+      <div style="background-color: #fafafa;" class="ui big raised segment">
         <h1 class="ui green header">
           <div class="content">
             Ціна {{price}} грн
           </div>
         </h1>
         <div class="field">
-          <button class="ui blue big button" [disabled]="!orderForm.valid || purchaseFlag">
+          <button class="ui blue huge button" [disabled]="!orderForm.valid || purchaseFlag">
             <i class="icon shop"></i>
             Замовити
           </button>
           <br>
-          <div class="ui mini negative compact message" *ngIf="!orderForm.valid">
+          <div class="ui small negative compact message" *ngIf="!orderForm.valid">
             Заповніть обов`язкові поля щоб зробити замовлення
           </div>
         </div>
         <div class="field">
-          <div class="segment" *ngIf="purchaseFlag">
+          <div class="big segment" *ngIf="purchaseFlag">
             <h2 class="ui green header">
               <div class="content">
                 Ваше замовлення зафiксовано.
               </div>
             </h2>
-            <div class="ui raised large segment">
+            <div class="ui raised big segment">
               <i class="green payment icon"></i> 5. Оплата.
             </div>
-            <p>Це останній крок. Ми розуміємо він найважливіший.</p>
-            <p> Для запуску друку зробіть оплату {{price}} грн. на рахунок 4731217105055709.</p>
-            <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону {{orderForm.get('phone').value}}.
-              В іншому випадку зателефонуйте 0734013733, щоб нічого не наплуталось.</p>
-            <div class="ui green ok inverted button" (click)="returnToProductsList()">
-              <i class="checkmark icon"></i> Добре, йду до банку
+            <p>Це останній крок.</p>
+            <p> Для запуску друку зробіть оплату на рахунок.</p>
+            <div class="ui center aligned grid">
+              <div class="three wide column">
+                <i class="icon mail dollar"></i>
+              </div>
+              <div class="two wide column">
+                <i class="icon mail forward"></i>
+              </div>
+              <div class="ten wide column">
+                <i class="icon mail visa"></i>
+              </div>
+            </div>
+            <div class="ui grid segment">
+              <div class="three wide column">
+                <h3 class="ui green header">
+                  <div class="content">
+                    {{price}}
+                  </div>
+                </h3>
+              </div>
+              <div class="two wide column">
+                <i class="icon green mail forward"></i>
+              </div>
+              <div class="eleven wide column">
+                <h3 class="ui green header">
+                  <div class="content">
+                    4731217105055709
+                  </div>
+                </h3>
+              </div>
+            </div>
+            <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону {{orderForm.get('phone').value}}.</p>
+            <div class="ui green ok big inverted button" (click)="returnToProductsList()">
+              <a href="https://www.privat24.ua/" target="_blank">
+                <i class="icon university"></i>Приват24</a>
             </div>
           </div>
         </div>

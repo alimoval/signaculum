@@ -13,7 +13,7 @@
     <i class="icon blue marker"></i>Доставимо Новою Поштою в найближче відділення.
   </p>
   <i class="icon blue ordered list"></i>Лише п`ять простих кроків.
-  <div class="ui raised large segment">
+  <div class="ui raised big segment">
     <i class="icon green arrow down"></i>1. Оберіть потрібний товар.
   </div>
   <div class="ui list">
@@ -23,7 +23,7 @@
   <div class="ui two columns stackable grid menu">
     <div class="ui column item link" *ngFor='let product of products'>
       <a [routerLink]="['/order-form/', product._id]">
-        <div class="ui top left big blue attached label">{{product.name}}</div>
+        <div class="ui top left huge blue attached label">{{product.name}}</div>
         <img [src]="product.imgSrc" alt="" class="ui image">
       </a>
     </div>
