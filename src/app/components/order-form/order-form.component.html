@@ -149,7 +149,8 @@
           </div>
         </div>
         <div class="field">
-          <div class="big segment" *ngIf="purchaseFlag">
+          <div class="big segment" *ngIf="true">
+            <!-- purchaseFlag -->
             <h2 class="ui green header">
               <div class="content">
                 Ваше замовлення зафiксовано.
@@ -159,7 +160,7 @@
               <i class="green payment icon"></i> 5. Оплата.
             </div>
             <p>Це останній крок.</p>
-            <p> Для запуску друку зробіть оплату на рахунок.</p>
+            <p> Для запуску друку зробіть оплату на карту.</p>
             <div class="ui center aligned grid">
               <div class="three wide column">
                 <i class="icon mail dollar"></i>
@@ -191,10 +192,9 @@
               </div>
             </div>
             <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону {{orderForm.get('phone').value}}.</p>
-            <div class="ui green ok big inverted button" (click)="returnToProductsList()">
-              <a href="https://www.privat24.ua/" target="_blank">
-                <i class="icon university"></i>Приват24</a>
-            </div>
+            <button class="positive ui big button">
+              <i class="icon money"></i>Приват24
+            </button>
           </div>
         </div>
       </div>
