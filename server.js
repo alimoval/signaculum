@@ -4,9 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const passport = require('passport');
 
-const index = require('./routes/index');
-const products = require('./routes/products');
-const orders = require('./routes/orders');
 const apiHandler = require('./routes/apiHandler');
 const users = require('./routes/users');
 
