@@ -1,28 +1,30 @@
-<div style="background-color: #fafafa;" class="ui large raised segment container">
-  <form class="ui form" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit(registerForm)">
-    <div class="ui raised large segment">
-      <i class="icon address card"></i>Реєстрація нового користувача.
-    </div>
-    <div class="field">
-      <label>Ім`я:</label>
-      <input type="text" formControlName="name">
-    </div>
-    <div class="field">
-      <label>Email:</label>
-      <input type="text" formControlName="email">
-    </div>
-    <div class="field">
-      <label>Пароль:</label>
-      <input type="password" formControlName="password">
-    </div>
-    <div class="field">
-      <button class="ui blue button" [disabled]="!registerForm.valid">
-        Зареєструвати
-      </button>
-      <br>
-      <div class="ui mini negative compact message" *ngIf="!registerForm.valid">
-        Заповніть обов`язкові поля.
+<div style="background-color: #fafafa;" class="ui raised segments">
+  <div class="ui huge segment">
+    <i class="icon address card"></i>Реєстрація нового користувача.
+  </div>
+  <div class="ui blue big segment">
+    <form class="ui big form" [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit(registerForm)">
+      <div class="field">
+        <label>Ім`я:</label>
+        <input type="text" formControlName="name">
       </div>
-    </div>
-  </form>
+      <div class="field">
+        <label>Email:</label>
+        <input type="text" formControlName="email">
+      </div>
+      <div class="field">
+        <label>Пароль:</label>
+        <input type="password" formControlName="password">
+      </div>
+      <div class="field">
+        <button class="ui big blue button" [disabled]="!registerForm.valid">
+          Зареєструвати
+        </button>
+        <br>
+        <div class="ui mini negative compact message" *ngIf="!registerForm.valid">
+          Заповніть обов`язкові поля.
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

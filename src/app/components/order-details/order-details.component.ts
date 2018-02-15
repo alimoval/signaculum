@@ -7,6 +7,7 @@ import { OrderService } from '../../services/order.service';
 import { Order } from '../../../Order';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css']

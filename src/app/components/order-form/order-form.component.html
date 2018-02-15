@@ -1,41 +1,43 @@
-<div class="ui stackable grid container">
-  <div class="eight wide column">
+<div class="ui stackable grid">
+  <!-- <div class="eight wide right aligned column">
+    <div class="ui raised segment" style="background-color: #fafafa;">
+      <div *ngIf="product" class="ui fluid image">
+        <img [src]="product.imgSrc" alt="" class="ui image">
+      </div>
+    </div>
+  </div> -->
+  <div class="sixteen wide column">
     <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
-      <div style="background-color: #fafafa;" class="ui big raised segment">
-        <div class="ui raised big segment">
-          <i class="icon green shop"></i>
-          <i class="icon green gift"></i> 2. Дізнайтесь ціну і подарунок.
+      <div class="ui raised segments">
+        <div class="ui huge segment">
+          <i class="icon blue shop"></i>
+          <i class="icon blue gift"></i> 2. Дізнайтесь ціну і подарунок.
         </div>
-        <p>Логотип нагорі завжди поверне до меню товарів.
-          <i class="icon blue arrow up"></i>
-        </p>
-        <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну. </p>
-        <div class="field">
-          <label>Розмір:</label>
-          <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
-            <option *ngFor="let size of product.sizes">{{size}}</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Кількість:</label>
-          <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
-        </div>
-        <h2 class="ui green header">
-          {{product.name}}
-        </h2>
-        <div class="ui two columns grid">
-          <div class="nine wide column">
-            <h2 class="ui green header">
-              {{price}} грн
-            </h2>
-            {{orderAmount}} одиниць.
+        <div class="ui big blue segment" style="background-color: #fafafa;">
+          <p>Логотип нагорі завжди поверне до меню товарів.
+            <i class="icon blue arrow up"></i>
+          </p>
+          <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну. </p>
+          <div class="field">
+            <label>Розмір:</label>
+            <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
+              <option *ngFor="let size of product.sizes">{{size}}</option>
+            </select>
           </div>
-          <div class="seven wide column">
+          <div class="field">
+            <label>Кількість:</label>
+            <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
           </div>
+          <h2 class="ui header">
+            {{product.name}}
+          </h2>
+          <h1 class="ui green header">
+            {{price}} грн
+          </h1>
+          <h2 class="ui green header">
+            <i class="icon gift"></i> Доставка у подарунок!
+          </h2>
         </div>
-        <h3 class="ui green header">
-          <i class="icon gift"></i> Доставка у подарунок!
-        </h3>
       </div>
       <!-- <div *ngIf="outdoor" class="ui raised segment">
                           <div class="field">
@@ -50,85 +52,89 @@
                               <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
                           </div>
                       </div> -->
-      <div style="background-color: #fafafa;" class="ui big raised segment">
-        <div class="ui raised big segment">
-          <i class="icon green image"></i> 3. Завантажте або замовте макет.
+      <div class="ui raised segments">
+        <div class="ui huge segment">
+          <i class="icon blue image"></i> 3. Завантажте або замовте макет.
         </div>
-        <p>Заповніть хоч одне поле в цьому блоці.</p>
-        <div class="field">
-          <label>Якщо у вас вже є готовий макет:</label>
-          <button class="ui blue button" (click)="designUpload()">
-            <i class="upload icon"></i>
-            Завантажити файл
-          </button>
-          <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
-        </div>
-        <div class="field">
-          <label>Якщо ви завантажили свій макет до віртуального носія і у вас є посилання:</label>
-          <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
-        </div>
-        <div class="field">
-          <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть текст, список послуг, телефони,
-            напишіть будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації та чітке завдання.
-          </label>
-          <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
-            rows="5" formControlName="description" (input)="showEmailInput();">
-                                  </textarea>
-        </div>
-        <div class="field" *ngIf="showEmailInputFlag">
-          <label>Та вкажіть Email на який вам відправити готовий макет:</label>
-          <input type="text" formControlName="email" (change)="tempFormValueRefresh()">
+        <div class="ui big blue segment" style="background-color: #fafafa;">
+          <p>Заповніть хоч одне поле в цьому блоці.</p>
+          <div class="field">
+            <label>Якщо у вас вже є готовий макет:</label>
+            <button class="ui blue button" (click)="designUpload()">
+              <i class="upload icon"></i>
+              Завантажити файл
+            </button>
+            <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
+          </div>
+          <div class="field">
+            <label>Якщо ви завантажили свій макет до віртуального носія і у вас є посилання:</label>
+            <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
+          </div>
+          <div class="field">
+            <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть текст, список послуг, телефони,
+              напишіть будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації та чітке завдання.
+            </label>
+            <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
+              rows="5" formControlName="description" (input)="showEmailInput();">
+                                    </textarea>
+          </div>
+          <div class="field" *ngIf="showEmailInputFlag">
+            <label>Та вкажіть Email на який вам відправити готовий макет:</label>
+            <input type="text" formControlName="email" (change)="tempFormValueRefresh()">
+          </div>
         </div>
       </div>
-      <div style="background-color: #fafafa;" class="ui big raised segment">
-        <div class="ui raised big segment">
-          <i class="icon green home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
+      <div class="ui raised segments">
+        <div class="ui huge segment">
+          <i class="icon blue home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
         </div>
-        <div class="field">
-          <label>Номер телефону: *</label>
-          <input type="text" formControlName="phone" (change)="searchByPhone()">
-        </div>
-        <div class="ui mini negative message" *ngIf="orderForm.get('phone').hasError('required') && orderForm.get('phone').touched">
-          Номер телефону - обов`язкове поле
-        </div>
-        <div class="field">
-          <label>Прізвище: *</label>
-          <input type="text" formControlName="surName" (change)="tempFormValueRefresh()">
-          <div class="ui mini negative message" *ngIf="orderForm.get('surName').hasError('required') && orderForm.get('surName').touched">
-            Прізвище - обов`язкове поле
+        <div class="ui big blue segment" style="background-color: #fafafa;">
+          <div class="field">
+            <label>Номер телефону: *</label>
+            <input type="text" formControlName="phone" (change)="searchByPhone()">
           </div>
-        </div>
-        <div class="field">
-          <label>Iм`я: *</label>
-          <input type="text" formControlName="name" (change)="tempFormValueRefresh()">
-          <div class="ui mini negative message" *ngIf="orderForm.get('name').hasError('required') && orderForm.get('name').touched">
-            Iм`я - обов`язкове поле
+          <div class="ui mini negative message" *ngIf="orderForm.get('phone').hasError('required') && orderForm.get('phone').touched">
+            Номер телефону - обов`язкове поле
           </div>
-        </div>
-        <div class="field">
-          <label>Місто доставки: *</label>
-          <div class="ui blue label">
-            (пошук українською)
+          <div class="field">
+            <label>Прізвище: *</label>
+            <input type="text" formControlName="surName" (change)="tempFormValueRefresh()">
+            <div class="ui mini negative message" *ngIf="orderForm.get('surName').hasError('required') && orderForm.get('surName').touched">
+              Прізвище - обов`язкове поле
+            </div>
           </div>
-          <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
-          <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
-            <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">{{city.Description}}</option>
-          </select>
-          <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
-                              <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>
-                          </select>-->
-          <div class="ui mini negative message" *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
-            Місто доставки - обов`язкове поле
+          <div class="field">
+            <label>Iм`я: *</label>
+            <input type="text" formControlName="name" (change)="tempFormValueRefresh()">
+            <div class="ui mini negative message" *ngIf="orderForm.get('name').hasError('required') && orderForm.get('name').touched">
+              Iм`я - обов`язкове поле
+            </div>
           </div>
-          <input type="text" [hidden]="true" formControlName="address">
-        </div>
-        <div class="field">
-          <label>Відділення: *</label>
-          <select class="ui fluid warehouse search dropdown" formControlName="warehouse" (change)="tempFormValueRefresh();">
-            <option value="{{warehouse.Description}}" *ngFor="let warehouse of novaPoshtaWarehouses">{{warehouse.Description}}</option>
-          </select>
-          <div class="ui mini negative message" *ngIf="orderForm.get('warehouse').hasError('required') && orderForm.get('warehouse').touched">
-            Відділення - обов`язкове поле
+          <div class="field">
+            <label>Місто доставки: *</label>
+            <div class="ui blue label">
+              (пошук українською)
+            </div>
+            <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
+            <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
+              <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">{{city.Description}}</option>
+            </select>
+            <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
+                                <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>
+                            </select>-->
+            <div class="ui mini negative message" *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
+              Місто доставки - обов`язкове поле
+            </div>
+            <input type="text" [hidden]="true" formControlName="address">
+          </div>
+          <div class="field">
+            <label>Відділення: *</label>
+            <select class="ui search dropdown" formControlName="warehouse" (change)="tempFormValueRefresh();">
+              <option value="{{warehouse.Description}}" *ngFor="let warehouse of novaPoshtaWarehouses">{{warehouse.Description}}</option>
+            </select>
+            <div class="ui mini negative message" *ngIf="orderForm.get('warehouse').hasError('required') && orderForm.get('warehouse').touched">
+              Відділення - обов`язкове поле
+            </div>
           </div>
         </div>
       </div>
@@ -147,83 +153,58 @@
           <div class="ui small negative compact message" *ngIf="!orderForm.valid">
             Заповніть обов`язкові поля щоб зробити замовлення
           </div>
-        </div>
-        <div class="field">
-          <div class="big segment" *ngIf="purchaseFlag">
-            <h2 class="ui green header">
-              <div class="content">
-                Ваше замовлення зафiксовано.
-              </div>
-            </h2>
-            <div class="ui raised big segment">
-              <i class="green payment icon"></i> 5. Оплата.
+          <h2 class="ui green header" *ngIf="purchaseFlag">
+            <div class="content">
+              Замовлення зафiксовано.
             </div>
-            <p>Це останній крок.</p>
-            <p> Для запуску друку зробіть оплату на карту.</p>
-            <div class="ui center aligned grid">
-              <div class="three wide column">
-                <i class="icon mail dollar"></i>
-              </div>
-              <div class="two wide column">
-                <i class="icon mail forward"></i>
-              </div>
-              <div class="ten wide column">
-                <i class="icon mail visa"></i>
-              </div>
-            </div>
-            <div class="ui grid segment">
-              <div class="three wide column">
-                <h3 class="ui green header">
-                  <div class="content">
-                    {{price}}
-                  </div>
-                </h3>
-              </div>
-              <div class="two wide column">
-                <i class="icon green mail forward"></i>
-              </div>
-              <div class="eleven wide column">
-                <h3 class="ui green header">
-                  <div class="content">
-                    4731217105055709
-                  </div>
-                </h3>
-              </div>
-            </div>
-            <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону {{orderForm.get('phone').value}}.</p>
-            <button class="positive ui big button">
-              <i class="icon money"></i>Приват24
-            </button>
-          </div>
+          </h2>
         </div>
       </div>
     </form>
-    <!-- <div class="ui basic modal">
-                  <div class="ui icon small header">
-                    <i class="green rocket icon"></i> Ваше замовлення зафiксовано
-                  </div>
-                  <div class="content">
-                    <p>
-                      <i class="green payment icon"></i> 5. Оплата.</p>
-                    <p> Сплатіть {{price}} грн. на рахунок 234567890123456. У разі сплати через Приват24, обовязково в коментарях до платежа
-                      вкажіть номер телефону, який ви вказали у замовленні. В іншому випадку зателефонуйте щоб нічого не сплуталось.</p>
-                  </div>
-                  <div class="actions">
-                    <div class="ui red cancel inverted button">
-                      <i class="remove icon"></i> Назад
-                    </div>
-                    <div class="ui green ok inverted button">
-                      <i class="checkmark icon"></i> Добре, йду до банку
-                    </div>
-                  </div>
-                </div> -->
-  </div>
-  <div class="eight wide right aligned column">
-    <div class="ui raised segment" style="background-color: #fafafa;">
-      <div *ngIf="product" class="ui fluid image">
-        <img [src]="product.imgSrc" alt="" class="ui image">
+    <div class="ui raised segments" *ngIf="purchaseFlag">
+      <div class="ui huge segment">
+        <i class="blue payment icon"></i> 5. Оплата.
+      </div>
+      <div class="ui blue big segment" style="background-color: #fafafa;">
+        <p>Це останній крок.</p>
+        <p> Для запуску друку зробіть оплату на карту.</p>
+        <div class="ui center aligned grid">
+          <div class="three wide column">
+            <i class="icon mail money"></i>
+          </div>
+          <div class="two wide column">
+            <i class="icon mail forward"></i>
+          </div>
+          <div class="ten wide column">
+            <i class="icon mail visa"></i>
+          </div>
+        </div>
+        <div class="ui center aligned grid segment">
+          <div class="three wide column">
+            <h3 class="ui green header">
+              <div class="content">
+                {{price}}
+              </div>
+            </h3>
+          </div>
+          <div class="two wide column">
+            <i class="icon green mail forward"></i>
+          </div>
+          <div class="eleven wide column">
+            <h3 class="ui green header">
+              <div class="content">
+                4731217105055709
+              </div>
+            </h3>
+          </div>
+        </div>
+        <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону {{orderForm.get('phone').value}}.</p>
+        <a href="https://www.privat24.ua/" target="_blank">
+          <button class="positive ui big button">
+            <i class="icon money"></i>Приват24
+          </button>
+        </a>
       </div>
     </div>
-    <br>
   </div>
 </div>

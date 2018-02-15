@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
