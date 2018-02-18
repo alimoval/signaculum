@@ -28,7 +28,7 @@ export class OrderFormComponent implements OnInit {
   public novaPoshtaCities: string;
   public novaPoshtaCityName: string;
   public novaPoshtaWarehouses: string;
-  public orderAmount: string;
+  public orderAmount: any;
   public showEmailInputFlag = false;
   public purchaseFlag = false;
   public query: String;
@@ -51,10 +51,10 @@ export class OrderFormComponent implements OnInit {
       .switchMap((params: Params) => this._productService.getProduct(params['id']))
       .subscribe(product => {
         this.product = product;
+        this.outdoor = this.product.outdoor;
+        this.sizeFlag = this.product.sizeFlag;
         this.createForm(this.product);
         this.priceCalculate();
-        // this.sizeFlag = this.product.sizeFlag;
-        // this.outdoor = this.product.outdoor;
       });
   }
 
@@ -72,16 +72,29 @@ export class OrderFormComponent implements OnInit {
       price: [product.price, Validators.required],
       phone: ['', Validators.required],
       size: [product.sizes[0], Validators.required],
+      width: [1000, Validators.required],
+      height: [1000, Validators.required],
       surName: ['', Validators.required],
       warehouse: ['', Validators.required]
     });
+    if (this.outdoor) {
+      this.orderForm.patchValue({
+        amount: 1
+      });
+    }
   }
 
   // Calculate Selected Product Price
   priceCalculate() {
     const sizeValue = this.orderForm.get('size').value;
     const index = this.product.sizes.indexOf(sizeValue);
-    const amount = this.orderForm.get('amount').value;
+    const width = this.orderForm.get('width').value;
+    const height = this.orderForm.get('height').value;
+    const multipleResult = width * height * 0.000001;
+    let amount = this.orderForm.get('amount').value;
+    if (this.outdoor) {
+      amount = amount * multipleResult;
+    }
     const prices = this.product.prices[index];
     this.orderAmount = amount;
     for (let i = 0; i < Object.keys(prices).length; i++) {

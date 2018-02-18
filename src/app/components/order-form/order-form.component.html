@@ -18,15 +18,36 @@
             <i class="icon blue arrow up"></i>
           </p>
           <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну. </p>
-          <div class="field">
-            <label>Розмір:</label>
-            <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
-              <option *ngFor="let size of product.sizes">{{size}}</option>
-            </select>
+          <div *ngIf="sizeFlag">
+            <div class="field">
+              <label>Розмір:</label>
+              <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
+                <option *ngFor="let size of product.sizes">{{size}}</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Кількість:</label>
+              <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
+            </div>
           </div>
-          <div class="field">
-            <label>Кількість:</label>
-            <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
+          <div *ngIf="outdoor">
+            <div class="field">
+              <label>Тип:</label>
+              <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
+                <option *ngFor="let size of product.sizes">{{size}}</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Розмір (мм):</label>
+              <input type="text" placeholder="ширина" formControlName="width" (change)="tempFormValueRefresh()">
+            </div>
+            <div class="field">
+              <input type="text" placeholder="висота" formControlName="height" (change)="tempFormValueRefresh()">
+            </div>
+            <div class="field">
+              <label>Кількість копій:</label>
+              <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
+            </div>
           </div>
           <h2 class="ui header">
             {{product.name}}
@@ -39,19 +60,6 @@
           </h2>
         </div>
       </div>
-      <!-- <div *ngIf="outdoor" class="ui raised segment">
-                          <div class="field">
-                              <label>Для розрахунку ціни оберіть розмір:</label>
-                              <input type="text" placeholder="ширина" formControlName="sizeWidth">
-                          </div>
-                          <div class="field">
-                              <input type="text" placeholder="висота" formControlName="sizeHeight">
-                          </div>
-                          <div class="field">
-                              <label>Вкажіть кількість копій:</label>
-                              <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
-                          </div>
-                      </div> -->
       <div class="ui raised segments">
         <div class="ui huge segment">
           <i class="icon blue image"></i> 3. Завантажте або замовте макет.
