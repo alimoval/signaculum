@@ -3,7 +3,8 @@ export class Product {
     name: string;
     imgSrc: string;
     prices: any[];
-    sizeFlag: boolean;
+    print: boolean;
     outdoor: boolean;
+    luvers: boolean;
     sizes: string[];
 }

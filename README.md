@@ -1,6 +1,6 @@
 # Signaculum
 
-MongoDB, Express, Angular 2 & NodeJS application. 
+MongoDB, Express, Angular 5 & NodeJS application. 
 
 JWT Tokens 
 

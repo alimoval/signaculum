@@ -4,7 +4,7 @@ var mongojs = require('mongojs');
 var db = mongojs('mongodb://alik:alik@ds161346.mlab.com:61346/signaculum');
 const passport = require('passport');
 
-//Get All Orders
+// Get All Orders
 router.get('/orders', passport.authenticate('jwt', { session: false }), function (req, res, next) {
     db.orders.find(function (err, orders) {
         if (err) {
@@ -14,7 +14,7 @@ router.get('/orders', passport.authenticate('jwt', { session: false }), function
     });
 });
 
-//Get Single Order
+// Get Single Order
 router.get('/order-details/:id', function (req, res, next) {
     db.orders.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, order) {
         if (err) {
@@ -24,7 +24,7 @@ router.get('/order-details/:id', function (req, res, next) {
     });
 });
 
-//Save Order
+// Save Order
 router.post('/order', function (req, res, next) {
     var order = req.body;
 
@@ -44,7 +44,7 @@ router.post('/order', function (req, res, next) {
     }
 });
 
-//Delete Order
+// Delete Order
 router.delete('/order/:id', function (req, res, next) {
     db.orders.remove({ _id: mongojs.ObjectId(req.params.id) }, function (err, order) {
         if (err) {
@@ -54,7 +54,7 @@ router.delete('/order/:id', function (req, res, next) {
     });
 });
 
-//Update Order
+// Update Order
 router.put('/order/:id', function (req, res, next) {
     var order = req.body;
     var updOrder = {};
@@ -78,7 +78,7 @@ router.put('/order/:id', function (req, res, next) {
     }
 });
 
-//Get All Products
+// Get All Products
 router.get('/products', function (req, res, next) {
     db.products.find(function (err, products) {
         if (err) {
@@ -88,7 +88,7 @@ router.get('/products', function (req, res, next) {
     });
 });
 
-//Get Single Products
+// Get Single Products
 router.get('/order-form/:id', function (req, res, next) {
     db.products.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, product) {
         if (err) {
@@ -98,7 +98,7 @@ router.get('/order-form/:id', function (req, res, next) {
     });
 });
 
-//Save Product
+// Save Product
 router.post('/product', function (req, res, next) {
     var product = req.body;
     //Verify
@@ -117,7 +117,7 @@ router.post('/product', function (req, res, next) {
     }
 })
 
-//Delete Product
+// Delete Product
 router.delete('/product/:id', function (req, res, next) {
     db.products.remove({ _id: mongojs.ObjectId(req.params.id) }, function (err, product) {
         if (err) {
@@ -127,7 +127,7 @@ router.delete('/product/:id', function (req, res, next) {
     });
 });
 
-//Update Product
+// Update Product
 router.put('/product/:id', function (req, res, next) {
     var product = req.body;
     var updProduct = {};

@@ -23,8 +23,9 @@ export class OrderFormComponent implements OnInit {
   public orderForm: FormGroup;
   public product: Product;
   public price = 0;
-  public sizeFlag: boolean;
+  public print: boolean;
   public outdoor: boolean;
+  public luvers: boolean;
   public novaPoshtaCities: string;
   public novaPoshtaCityName: string;
   public novaPoshtaWarehouses: string;
@@ -52,7 +53,8 @@ export class OrderFormComponent implements OnInit {
       .subscribe(product => {
         this.product = product;
         this.outdoor = this.product.outdoor;
-        this.sizeFlag = this.product.sizeFlag;
+        this.print = this.product.print;
+        this.luvers = this.product.luvers;
         this.createForm(this.product);
         this.priceCalculate();
       });
@@ -94,6 +96,11 @@ export class OrderFormComponent implements OnInit {
     let amount = this.orderForm.get('amount').value;
     if (this.outdoor) {
       amount = amount * multipleResult;
+    }
+    if (this.luvers) {
+      this.orderForm.patchValue({
+        amount: 1000
+      });
     }
     const prices = this.product.prices[index];
     this.orderAmount = amount;

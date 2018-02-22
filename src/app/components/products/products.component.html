@@ -1,4 +1,4 @@
-<div class="ui left aligned big raised segment" style="background-color: #f5f5f5;">
+<div class="ui left aligned huge raised segment" style="background-color: #f5f5f5;">
   <h2 class="ui blue header center aligned">Швидко та зручно друкуйте поліграфію.</h2>
   <p>
     <i class="icon blue wait"></i>Збережемо ваш час.
@@ -13,17 +13,17 @@
     <i class="icon blue marker"></i>Доставимо Новою Поштою в найближче відділення.
   </p>
   <i class="icon blue ordered list"></i>Лише п`ять простих кроків.
-  <div class="ui blue raised segments">
-    <div class="ui huge segment">
-      <i class="icon blue arrow down"></i>1. Оберіть потрібний товар.
-    </div>
-    <div class="ui two columns stackable grid menu blue segment">
-      <div class="ui column item link" *ngFor='let product of products'>
-        <a [routerLink]="['/order-form/', product._id]">
-          <div class="ui top left huge blue attached label">{{product.name}}</div>
-          <img [src]="product.imgSrc" alt="" class="ui huge image">
-        </a>
-      </div>
+</div>
+<div class="ui blue raised segments">
+  <div class="ui huge segment">
+    <i class="icon blue arrow down"></i>1. Оберіть потрібний товар.
+  </div>
+  <div class="ui three columns stackable grid menu blue segment">
+    <div class="ui column center aligned item link" *ngFor='let product of products'>
+      <a [routerLink]="['/order-form/', product._id]">
+        <div class="ui top left huge blue attached label">{{product.name}}</div>
+        <img [src]="product.imgSrc" alt="" class="ui image">
+      </a>
     </div>
   </div>
 </div>

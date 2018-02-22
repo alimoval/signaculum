@@ -18,7 +18,7 @@
             <i class="icon blue arrow up"></i>
           </p>
           <p>Це параметри друку вашого замовлення. Змініть їх та дізнайтесь ціну. </p>
-          <div *ngIf="sizeFlag">
+          <div *ngIf="!outdoor">
             <div class="field">
               <label>Розмір:</label>
               <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
@@ -60,7 +60,7 @@
           </h2>
         </div>
       </div>
-      <div class="ui raised segments">
+      <div *ngIf="!luvers" class="ui raised segments">
         <div class="ui huge segment">
           <i class="icon blue image"></i> 3. Завантажте або замовте макет.
         </div>
@@ -75,12 +75,12 @@
             <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
           </div>
           <div class="field">
-            <label>Якщо ви завантажили свій макет до віртуального носія і у вас є посилання:</label>
+            <label>Якщо ви завантажили свій макет до віртуального носія і у вас є адреса:</label>
             <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
           </div>
           <div class="field">
-            <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите свій макет. Вкажіть текст, список послуг, телефони,
-              напишіть будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації та чітке завдання.
+            <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите своє замовлення. Вкажіть його текст, список послуг, телефони,
+              залиште будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації та чітке завдання.
             </label>
             <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
               rows="5" formControlName="description" (input)="showEmailInput();">
