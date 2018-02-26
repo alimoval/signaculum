@@ -171,6 +171,7 @@ export class OrderFormComponent implements OnInit {
   onSubmit(orderForm): void {
     this.addOrder(orderForm.value);
     this.purchaseFlag = true;
+    window.scrollBy(0, 100);
   }
 
   returnToProductsList() {

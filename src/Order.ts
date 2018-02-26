@@ -13,4 +13,6 @@ export class Order {
     size: string;
     surName: string;
     warehouse: string;
+    width: string;
+    height: string;
 }
