@@ -3,8 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
-import { OrderService } from '../../services/order.service';
 import { Order } from '../../../Order';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,10 +15,11 @@ import { Order } from '../../../Order';
 export class OrderDetailsComponent implements OnInit {
 
   public order: Order;
+  public image: string;
   public router: Router;
 
   constructor(
-    private _orderService: OrderService,
+    private _authServise: AuthService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
@@ -27,14 +28,15 @@ export class OrderDetailsComponent implements OnInit {
 
   getOrder() {
     this._route.params
-      .switchMap((params: Params) => this._orderService.getOrder(params['id']))
+      .switchMap((params: Params) => this._authServise.getOrder(params['id']))
       .subscribe(order => {
         this.order = order;
+        this.image = this.order.image;
       });
   }
 
   deleteOrder(id) {
-    this._orderService.deleteOrder(id)
+    this._authServise.deleteOrder(id)
       .subscribe(data => {
         this.router.navigate(['./orders']);
       });

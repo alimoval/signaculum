@@ -24,15 +24,6 @@ export class AuthService {
       .map(res => res.json());
   }
 
-  getOrders() {
-    const headers = new Headers();
-    this.loadToken();
-    headers.append('Authorization', this.authToken);
-    headers.append('Content-Type', 'application/json');
-    return this._http.get('/api/orders', { headers: headers })
-      .map(res => res.json());
-  }
-
   getProfile() {
     const headers = new Headers();
     this.loadToken();
@@ -56,6 +47,29 @@ export class AuthService {
 
   loggedIn() {
     return tokenNotExpired('id_token');
+  }
+
+  getOrders() {
+    const headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this._http.get('/api/orders', { headers: headers })
+      .map(res => res.json());
+  }
+
+  getOrder(id: string) {
+    const headers = new Headers();
+    this.loadToken();
+    headers.append('Authorization', this.authToken);
+    headers.append('Content-Type', 'application/json');
+    return this._http.get('/api/order-details/' + id, { headers: headers })
+      .map(res => res.json());
+  }
+
+  deleteOrder(id) {
+    return this._http.delete('/api/order/' + id)
+      .map(res => res.json());
   }
 
   logOut() {
