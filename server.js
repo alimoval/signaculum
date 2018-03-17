@@ -12,8 +12,11 @@ const app = express();
 // CORS Middlewear
 app.use(cors());
 
-//Set Static Folder
+// Set Static Folder
 app.use(express.static(path.join(__dirname, 'dist')));
+
+// Set views engine
+app.engine('html', require('ejs').renderFile);
 
 //Body Parser
 app.use(bodyParser.json());
@@ -25,8 +28,17 @@ app.use(passport.session());
 
 require('./config/passport')(passport);
 
+// Google Track 
+app.get('/google2de96d444ab69ac9.html', function (req, res, next) {
+    // res.json({key: "try"});
+    res.send('google-site-verification: google2de96d444ab69ac9.html');
+});
+
+// Use Routes
 app.use('/api', apiHandler);
 app.use('/users', users);
+
+// Use redirect for all client requests
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
 });

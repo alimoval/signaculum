@@ -1,10 +1,10 @@
 <div class="ui grid menu" style="background-color: #37474f;">
-  <div routerLink="/" class="twelve wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+  <div routerLink="/" class="thirteen wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
     <h2 class="ui inverted header">
       <i class="print blue icon"></i> {{title}}
     </h2>
   </div>
-  <div class="ui four wide column item">
+  <div class="ui three wide column item">
     <div class="ui stackable grid">
       <div *ngIf="authService.loggedIn()" routerLink="/orders" class="four wide column item link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
         <p class="ui inverted tiny header">
@@ -24,7 +24,7 @@
       </div>
       <div *ngIf="!authService.loggedIn()" routerLink="/login" class="column item link" routerLinkActive="active"
         [routerLinkActiveOptions]="{exact:true}">
-        <p class="ui inverted tiny header">
+        <p class="ui right floated inverted tiny header">
           Log In
         </p>
       </div>

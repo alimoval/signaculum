@@ -5,6 +5,7 @@ import { Router, RouterLinkActive } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
