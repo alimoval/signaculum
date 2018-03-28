@@ -63,7 +63,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/order-details/' + id, { headers: headers })
+    return this._http.get('/api/order-details/' + id, { headers: headers })
       .map(res => res.json());
   }
 

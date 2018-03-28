@@ -1,17 +1,23 @@
 <a [routerLink]="['/order-details/', order._id]" *ngFor='let order of orders' style="background-color: #fafafa;">
     <div class="ui big segment">
         <div class="ui stackable grid link">
-            <div class="two wide column">
+            <div class="one wide column">
                 {{order.price}}
             </div>
-            <div class="three wide column">
+            <div class="two wide column">
                 {{order.product}}
             </div>
-            <div class="four wide column">
+            <div class="two wide column">
                 {{order.address}}
             </div>
-            <div class="four wide column">
-                {{order.name}}
+            <div class="five wide column">
+                {{order.warehouse}}
+            </div>
+            <div class="three wide column">
+                {{order.name}} {{order.surName}}
+            </div>
+            <div class="three wide column">
+                {{order.phone}}
             </div>
         </div>
     </div>

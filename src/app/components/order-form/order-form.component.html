@@ -13,7 +13,7 @@
           <i class="icon blue shop"></i>
           <i class="icon blue gift"></i> 2. Дізнайтесь ціну і подарунок.
         </div>
-        <div class="ui huge blue segment" style="background-color: #fafafa;">
+        <div class="ui big blue segment" style="background-color: #fafafa;">
           <p>Логотип нагорі завжди поверне до меню товарів.
             <i class="icon blue arrow up"></i>
           </p>
@@ -64,16 +64,16 @@
         <div class="ui huge segment">
           <i class="icon blue image"></i> 3. Завантажте або замовте макет.
         </div>
-        <div class="ui huge blue segment" style="background-color: #fafafa;">
+        <div class="ui big blue segment" style="background-color: #fafafa;">
           <p>Заповніть хоч одне поле в цьому блоці.</p>
-          <div class="field">
+          <!-- <div class="field">
             <label>Якщо у вас вже є готовий макет:</label>
             <button class="ui blue button" (click)="designUpload()">
               <i class="upload icon"></i>
               Завантажити файл
             </button>
             <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
-          </div>
+          </div> -->
           <div class="field">
             <label>Якщо ви завантажили свій макет до віртуального носія і у вас є адреса:</label>
             <input type="text" placeholder="Google Drive, DropBox або інше" formControlName="link" (input)="tempFormValueRefresh();">
@@ -96,7 +96,7 @@
         <div class="ui huge segment">
           <i class="icon blue home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
         </div>
-        <div class="ui huge blue segment" style="background-color: #fafafa;">
+        <div class="ui big blue segment" style="background-color: #fafafa;">
           <div class="field">
             <label>Номер телефону: *</label>
             <input type="text" formControlName="phone" (change)="searchByPhone()">
@@ -120,7 +120,7 @@
           </div>
           <div class="field">
             <label>Місто доставки: *</label>
-            <div class="ui blue label">
+            <div class="ui large blue label">
               (пошук українською)
             </div>
             <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
@@ -173,7 +173,7 @@
       <div class="ui huge segment">
         <i class="blue payment icon"></i> 5. Оплата.
       </div>
-      <div class="ui huge big segment" style="background-color: #fafafa;">
+      <div class="ui big segment" style="background-color: #fafafa;">
         <p>Це останній крок.</p>
         <p> Для запуску друку зробіть оплату на карту.</p>
         <div class="ui center aligned grid">
