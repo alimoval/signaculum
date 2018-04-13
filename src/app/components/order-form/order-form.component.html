@@ -17,11 +17,11 @@
           <p>Логотип нагорі завжди поверне до меню товарів.
             <i class="icon blue arrow up"></i>
           </p>
-          <p>Це параметри вашого замовлення. Змініть їх та дізнайтесь ціну. </p>
+          <p>{{product.info}}</p>
           <div *ngIf="!outdoor">
             <div class="field">
               <label>Розмір:</label>
-              <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
+              <select class="ui dropdown" formControlName="size" (change)="tempFormValueRefresh()">
                 <option *ngFor="let size of product.sizes">{{size}}</option>
               </select>
             </div>
@@ -32,8 +32,8 @@
           </div>
           <div *ngIf="outdoor">
             <div class="field">
-              <label>Тип:</label>
-              <select class="ui fluid size dropdown" formControlName="size" (change)="tempFormValueRefresh()">
+              <label>Тип друку:</label>
+              <select class="ui huge dropdown" formControlName="size" (change)="tempFormValueRefresh()">
                 <option *ngFor="let size of product.sizes">{{size}}</option>
               </select>
             </div>
@@ -87,7 +87,7 @@
             </textarea>
           </div>
           <div class="field">
-            <label>Якщо ви готові завантажити файл. Натисніть копку та перетягніть файл в вікно що відкриється:</label>
+            <label>Якщо ви готові завантажити файл. Натисніть кнопку та перетягніть файл в вікно що відкриється:</label>
             <a target="_blank" href="https://drive.google.com/drive/folders/1lx0kCGxWoyQ7td-i4cYDKnl9Ky2uQIx_?usp=sharing">
               <i class="icon large blue file"></i>
               <i class="icon large blue share"></i>

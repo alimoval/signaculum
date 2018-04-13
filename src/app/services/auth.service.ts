@@ -13,14 +13,14 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('/users/register', user, { headers: headers })
+    return this._http.post('http://localhost:3000/users/register', user, { headers: headers })
       .map(res => res.json());
   }
 
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('/users/authenticate', user, { headers: headers })
+    return this._http.post('http://localhost:3000/users/authenticate', user, { headers: headers })
       .map(res => res.json());
   }
 
@@ -29,7 +29,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/users/profile', { headers: headers })
+    return this._http.get('http://localhost:3000/users/profile', { headers: headers })
       .map(res => res.json());
   }
 
@@ -54,7 +54,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/api/orders', { headers: headers })
+    return this._http.get('http://localhost:3000/api/orders', { headers: headers })
       .map(res => res.json());
   }
 
@@ -63,12 +63,12 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/api/order-details/' + id, { headers: headers })
+    return this._http.get('http://localhost:3000/api/order-details/' + id, { headers: headers })
       .map(res => res.json());
   }
 
   deleteOrder(id) {
-    return this._http.delete('/api/order/' + id)
+    return this._http.delete('http://localhost:3000/api/order/' + id)
       .map(res => res.json());
   }
 

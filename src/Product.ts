@@ -7,4 +7,5 @@ export class Product {
     outdoor: boolean;
     luvers: boolean;
     sizes: string[];
+    info: string;
 }
