@@ -29,9 +29,8 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 // Google Track 
-app.get('/google2de96d444ab69ac9.html', function (req, res, next) {
-    // res.json({key: "try"});
-    res.send('google-site-verification: google2de96d444ab69ac9.html');
+app.get('/googlefae522ebf7806c98.html', function (req, res, next) {
+    res.render('googlefae522ebf7806c98');
 });
 
 // Use Routes
