@@ -30,7 +30,7 @@ require('./config/passport')(passport);
 
 // Google Track 
 app.get('/googlefae522ebf7806c98.html', function (req, res, next) {
-    res.render('googlefae522ebf7806c98');
+    res.sendFile(path.join(__dirname + 'dist/googlefae522ebf7806c98.html'));
 });
 
 // Use Routes
