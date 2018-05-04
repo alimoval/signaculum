@@ -75,23 +75,24 @@
             <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
           </div> -->
           <div class="field">
-            <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите своє замовлення. Повідомте якщо вам
-              потрібен макет. Вкажіть його
-              текст, список послуг, телефони, залиште будь-який коментар. Щоб зробити все швидко, нам важливо мати
-              більше інформації та чітке завдання.
+            <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите своє замовлення. Повідомте якщо вам потрібен
+              макет. Вкажіть його текст, список послуг, телефони, залиште будь-який коментар. Щоб зробити все швидко, нам
+              важливо мати більше інформації та чітке завдання.
             </label>
             <label>Якщо ви завантажили свій макет до віртуального носія і у вас є адреса вкажіть це тут:</label>
-            <textarea
-              placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
+            <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
               rows="5" formControlName="description" (input)="showEmailInput();">
             </textarea>
           </div>
           <div class="field">
-            <label>Якщо ви готові завантажити файл. Натисніть кнопку та перетягніть файл в вікно що відкриється:</label>
+            <label>Якщо ви готові завантажити файл.</label>
+            Натисніть на іконку нижче. У новій вкладці відкриється Google Drive, куди ви можете завантажити свій файл.
             <a target="_blank" href="https://drive.google.com/drive/folders/1lx0kCGxWoyQ7td-i4cYDKnl9Ky2uQIx_?usp=sharing">
-              <i class="icon large blue file"></i>
-              <i class="icon large blue share"></i>
-              <i class="icon big blue folder open outline"> </i>
+              <div class="ui center align">
+                <i class="icon large blue file"></i>
+                <i class="icon large blue share"></i>
+                <i class="icon big blue folder open outline"> </i>
+              </div>
             </a>
           </div>
           <div class="field" *ngIf="showEmailInputFlag">
@@ -109,23 +110,20 @@
             <label>Номер телефону: *</label>
             <input type="text" formControlName="phone" (change)="searchByPhone()">
           </div>
-          <div class="ui mini negative message"
-               *ngIf="orderForm.get('phone').hasError('required') && orderForm.get('phone').touched">
+          <div class="ui mini negative message" *ngIf="orderForm.get('phone').hasError('required') && orderForm.get('phone').touched">
             Номер телефону - обов`язкове поле
           </div>
           <div class="field">
             <label>Прізвище: *</label>
             <input type="text" formControlName="surName" (change)="tempFormValueRefresh()">
-            <div class="ui mini negative message"
-                 *ngIf="orderForm.get('surName').hasError('required') && orderForm.get('surName').touched">
+            <div class="ui mini negative message" *ngIf="orderForm.get('surName').hasError('required') && orderForm.get('surName').touched">
               Прізвище - обов`язкове поле
             </div>
           </div>
           <div class="field">
             <label>Iм`я: *</label>
             <input type="text" formControlName="name" (change)="tempFormValueRefresh()">
-            <div class="ui mini negative message"
-                 *ngIf="orderForm.get('name').hasError('required') && orderForm.get('name').touched">
+            <div class="ui mini negative message" *ngIf="orderForm.get('name').hasError('required') && orderForm.get('name').touched">
               Iм`я - обов`язкове поле
             </div>
           </div>
@@ -135,8 +133,7 @@
               (шукайте українською)
             </div>
             <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
-            <select class="ui fluid dropdown"
-                    (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
+            <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
               <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">
                 {{city.Description}}
               </option>
@@ -144,8 +141,7 @@
             <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
                                 <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>
                             </select>-->
-            <div class="ui mini negative message"
-                 *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
+            <div class="ui mini negative message" *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
               Місто доставки - обов`язкове поле
             </div>
             <input type="text" [hidden]="true" formControlName="address">
@@ -157,8 +153,7 @@
                 {{warehouse.Description}}
               </option>
             </select>
-            <div class="ui mini negative message"
-                 *ngIf="orderForm.get('warehouse').hasError('required') && orderForm.get('warehouse').touched">
+            <div class="ui mini negative message" *ngIf="orderForm.get('warehouse').hasError('required') && orderForm.get('warehouse').touched">
               Відділення - обов`язкове поле
             </div>
           </div>
@@ -185,6 +180,7 @@
           <h2 class="ui green header" *ngIf="purchaseFlag">
             <div class="content">
               Замовлення зафiксовано.
+              <i class="blue arrow down icon"></i>
             </div>
           </h2>
         </div>
@@ -227,8 +223,6 @@
             </h3>
           </div>
         </div>
-        <p> У разі сплати через Приват24, в коментарях до платежа вкажіть номер телефону
-          {{orderForm.get('phone').value}}.</p>
         <a href="https://www.privat24.ua/" target="_blank">
           <button class="positive ui big button">
             <i class="icon money"></i>Приват24
