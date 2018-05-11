@@ -10,8 +10,10 @@
     <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
       <div class="ui raised segments">
         <div class="ui huge segment">
-          <i class="icon blue shop"></i>
-          <i class="icon blue gift"></i> 2. Дізнайтесь ціну і подарунок.
+          <h3 class="ui blue header">
+            <i class="icon blue gift"></i>
+            2. Дізнайтесь ціну і подарунок.
+          </h3>
         </div>
         <div class="ui big blue segment" style="background-color: #fafafa;">
           <p>Логотип нагорі завжди поверне до меню товарів.
@@ -62,24 +64,17 @@
       </div>
       <div class="ui raised segments">
         <div class="ui huge segment">
-          <i class="icon blue image"></i> 3. Завантажте або замовте макет.
+          <h3 class="ui blue header">
+            <i class="icon blue image"></i> 3. Замовте макет або зробіть коментар.
+          </h3>
         </div>
         <div class="ui big blue segment" style="background-color: #fafafa;">
-          <p>Заповніть хоч одне поле в цьому блоці.</p>
-          <!-- <div class="field">
-            <label>Якщо у вас вже є готовий макет:</label>
-            <button class="ui blue button" (click)="designUpload()">
-              <i class="upload icon"></i>
-              Завантажити файл
-            </button>
-            <input type="file" id="hidden-new-file" [hidden]="true" (click)="fileUpload($event)">
-          </div> -->
           <div class="field">
-            <label>Якщо у вас ще нічого немає, просто опішіть словами яким ви бачите своє замовлення. Повідомте якщо вам потрібен
-              макет. Вкажіть його текст, список послуг, телефони, залиште будь-який коментар. Щоб зробити все швидко, нам
-              важливо мати більше інформації та чітке завдання.
-            </label>
-            <label>Якщо ви завантажили свій макет до віртуального носія і у вас є адреса вкажіть це тут:</label>
+            <label>Якщо у вас ще нічого немає:</label>
+            <p>Просто опішіть словами яким ви бачите своє замовлення. Повідомте якщо вам потрібен макет. Вкажіть його текст,
+              список послуг, телефони, залиште будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації
+              та чітке завдання. Повідомте, якщо потріна адресна доставка.
+            </p>
             <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
               rows="5" formControlName="description" (input)="showEmailInput();">
             </textarea>
@@ -88,11 +83,9 @@
             <label>Якщо ви готові завантажити файл.</label>
             Натисніть на іконку нижче. У новій вкладці відкриється Google Drive, куди ви можете завантажити свій файл.
             <a target="_blank" href="https://drive.google.com/drive/folders/1lx0kCGxWoyQ7td-i4cYDKnl9Ky2uQIx_?usp=sharing">
-              <div class="ui center align">
-                <i class="icon large blue file"></i>
-                <i class="icon large blue share"></i>
-                <i class="icon big blue folder open outline"> </i>
-              </div>
+              <i class="icon large blue file"></i>
+              <i class="icon large blue share"></i>
+              <i class="icon big blue folder open outline"> </i>
             </a>
           </div>
           <div class="field" *ngIf="showEmailInputFlag">
@@ -103,7 +96,9 @@
       </div>
       <div class="ui raised segments">
         <div class="ui huge segment">
-          <i class="icon blue home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
+          <h3 class="ui blue header">
+            <i class="icon blue home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
+          </h3>
         </div>
         <div class="ui big blue segment" style="background-color: #fafafa;">
           <div class="field">
@@ -188,9 +183,11 @@
     </form>
     <div class="ui raised segments" *ngIf="purchaseFlag">
       <div class="ui huge segment">
-        <i class="blue payment icon"></i> 5. Оплата.
+        <h3 class="ui blue header">
+          <i class="blue payment icon"></i> 5. Оплата.
+        </h3>
       </div>
-      <div class="ui big segment" style="background-color: #fafafa;">
+      <div class="ui big blue segment" style="background-color: #fafafa;">
         <p>Це останній крок.</p>
         <p> Для запуску друку зробіть оплату на карту.</p>
         <div class="ui center aligned grid">
