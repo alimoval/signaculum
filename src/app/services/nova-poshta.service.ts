@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class NovaPoshtaService {
 
-    private _apiKey = '1445995d7b4ff4275235065b3bd1c721';
+    private _apiKey = '7450bd2300e84d0efae7b516c40863ca	';
     private _novaPoshtaApiUrl = 'https://api.novaposhta.ua/v2.0/json/';
 
     constructor(private _http: Http) { }
