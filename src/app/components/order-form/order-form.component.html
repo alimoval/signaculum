@@ -128,7 +128,9 @@
             <div class="ui big blue label">
               (шукайте українською)
             </div>
-            <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}">
+            <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" placeholder='Одеса'>
+            <br>
+            <i class="icon blue arrow down"></i> відкриває список міст
             <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
               <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">
                 {{city.Description}}

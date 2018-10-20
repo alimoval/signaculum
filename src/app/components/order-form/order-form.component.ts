@@ -98,9 +98,9 @@ export class OrderFormComponent implements OnInit {
       amount = amount * multipleResult;
     }
     if (this.luvers) {
-      this.orderForm.patchValue({
-        amount: 1000
-      });
+      // this.orderForm.patchValue({
+      //   amount: ''
+      // });
     }
     const prices = this.product.prices[index];
     this.orderAmount = amount;

@@ -13,14 +13,15 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('/users/register', user, { headers: headers })
+    // 'http://localhost:3000/api/users/register'
+    return this._http.post('/api/users/register', user, { headers: headers })
       .map(res => res.json());
   }
 
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('/users/authenticate', user, { headers: headers })
+    return this._http.post('/api/users/authenticate', user, { headers: headers })
       .map(res => res.json());
   }
 
@@ -29,7 +30,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/users/profile', { headers: headers })
+    return this._http.get('/api/users/profile', { headers: headers })
       .map(res => res.json());
   }
 
