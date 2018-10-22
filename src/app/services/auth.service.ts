@@ -13,7 +13,7 @@ export class AuthService {
   registerUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    // 'http://localhost:3000/api/users/register'
+    // http://localhost:3000
     return this._http.post('/api/users/register', user, { headers: headers })
       .map(res => res.json());
   }

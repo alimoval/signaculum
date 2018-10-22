@@ -35,7 +35,7 @@ app.get('/googlefae522ebf7806c98.html', function (req, res, next) {
 
 // Use Routes
 app.use('/api', apiHandler);
-app.use('/users', users);
+app.use('/api/users', users);
 
 // Use redirect for all client requests
 app.get('*', (req, res) => {

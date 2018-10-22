@@ -1,5 +1,5 @@
 <div class="ui left aligned huge raised segment" style="background-color: #f5f5f5;">
-  <h1 class="ui blue header center aligned">Швидко та зручно друкуйте поліграфію та рекламу.</h1>
+  <h1 class="ui blue header center aligned">Друкуйте поліграфію та рекламу швидко та зручно.</h1>
   <p>
     <i class="icon blue calculator"></i>Дізнайтесть ціну <i class="icon blue money"></i>в один клік.
   </p>
@@ -27,7 +27,7 @@
     <div class="ui column center aligned item link" *ngFor='let product of products'>
       <a [routerLink]="['/order-form/', product._id]">
         <div class="ui top left huge blue attached label">{{product.name}}</div>
-        <img [src]="product.imgSrc" alt="" class="ui image" style='padding-left:50px;'>
+        <img [src]="product.imgSrc" alt="" class="ui image" style='padding-left:40px;padding-top:30px;'>
       </a>
     </div>
   </div>
