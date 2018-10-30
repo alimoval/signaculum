@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-
-import 'rxjs/add/operator/switchMap';
-
 import { Order } from '../../../Order';
 import { AuthService } from '../../services/auth.service';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   // tslint:disable-next-line:component-selector
