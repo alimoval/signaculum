@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { tokenNotExpired } from 'angular2-jwt';
@@ -7,6 +8,8 @@ import { tokenNotExpired } from 'angular2-jwt';
 export class AuthService {
   authToken: any;
   user: any;
+  serverConfig: any = environment.serverConfig;
+  base = this.serverConfig.host + this.serverConfig.port;
 
   constructor(private _http: Http) { }
 
@@ -14,14 +17,14 @@ export class AuthService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // http://localhost:3000
-    return this._http.post('/api/users/register', user, { headers: headers })
+    return this._http.post(this.base + '/api/users/register', user, { headers: headers })
       .map(res => res.json());
   }
 
   authenticateUser(user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this._http.post('/api/users/authenticate', user, { headers: headers })
+    return this._http.post(this.base + '/api/users/authenticate', user, { headers: headers })
       .map(res => res.json());
   }
 
@@ -30,7 +33,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/api/users/profile', { headers: headers })
+    return this._http.get(this.base + '/api/users/profile', { headers: headers })
       .map(res => res.json());
   }
 
@@ -55,7 +58,7 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/api/orders', { headers: headers })
+    return this._http.get(this.base + '/api/orders', { headers: headers })
       .map(res => res.json());
   }
 
@@ -64,12 +67,12 @@ export class AuthService {
     this.loadToken();
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
-    return this._http.get('/api/order-details/' + id, { headers: headers })
+    return this._http.get(this.base + '/api/order-details/' + id, { headers: headers })
       .map(res => res.json());
   }
 
   deleteOrder(id) {
-    return this._http.delete('/api/order/' + id)
+    return this._http.delete(this.base + '/api/order/' + id)
       .map(res => res.json());
   }
 
