@@ -57,7 +57,7 @@
           <h1 class="ui green header">
             {{price}} грн
           </h1>
-          <h2 class="ui green header">
+          <h2 class="ui red header" *ngIf="!luvers">
             <i class="icon gift"></i> Доставка у подарунок!
           </h2>
         </div>
@@ -65,40 +65,7 @@
       <div class="ui raised segments">
         <div class="ui huge segment">
           <h3 class="ui small blue header">
-            <i class="icon blue image"></i> 3. Замовте макет або зробіть коментар.
-          </h3>
-        </div>
-        <div class="ui big blue segment" style="background-color: #fafafa;">
-          <div class="field">
-            <label>Якщо у вас ще нічого немає:</label>
-            <p>Просто опішіть словами яким ви бачите своє замовлення. Повідомте якщо вам потрібен макет. Вкажіть його текст,
-              список послуг, телефони, залиште будь-який коментар. Щоб зробити все швидко, нам важливо мати більше інформації
-              та чітке завдання. Повідомте, якщо потріна адресна доставка.
-            </p>
-            <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
-              rows="5" formControlName="description" (input)="showEmailInput();">
-            </textarea>
-          </div>
-          <div class="field">
-            <label>Якщо ви готові завантажити файл.</label>
-            Натисніть на іконки. У новій вкладці відкриється Google Drive, куди ви можете завантажити свій файл.
-            <br>
-            <a target="_blank" href="https://drive.google.com/drive/folders/1lx0kCGxWoyQ7td-i4cYDKnl9Ky2uQIx_?usp=sharing">
-              <i class="icon large blue file"></i>
-              <i class="icon large blue share"></i>
-              <i class="icon big blue folder open outline"> </i>
-            </a>
-          </div>
-          <div class="field" *ngIf="showEmailInputFlag">
-            <label>Та вкажіть Email на який вам відправити готовий макет:</label>
-            <input type="text" formControlName="email" (change)="tempFormValueRefresh()">
-          </div>
-        </div>
-      </div>
-      <div class="ui raised segments">
-        <div class="ui huge segment">
-          <h3 class="ui small blue header">
-            <i class="icon blue home"></i> 4. Вкажіть необхідні данні для доставки Новою Поштою.
+            <i class="icon blue home"></i>3. Вкажіть необхідні данні для доставки Новою Поштою.
           </h3>
         </div>
         <div class="ui big blue segment" style="background-color: #fafafa;">
@@ -157,6 +124,31 @@
           </div>
           <div class="field">
             Для оформлення кур'єрської доставки вкажіть адресу у коментарях
+          </div>
+        </div>
+      </div>
+      <div class="ui raised segments">
+        <div class="ui huge segment">
+          <h3 class="ui small blue header">
+            <i class="icon blue image"></i> 4. Коментар або файли. (необов`язково)
+          </h3>
+        </div>
+        <div class="ui big blue segment" style="background-color: #fafafa;">
+          <div class="field">
+            <label>Коментар:</label>
+            <textarea placeholder="Xочу чтоб слева была реалистичная лампочка. И фон на визитке сделайте серым каким-то, как мой Матиз что-ли). И на обратной стороне перед каждой строчкой поставьте плиз какую-то точку жирную, или тире. Ну вроде все)"
+              rows="3" formControlName="description" (input)="showEmailInput();">
+            </textarea>
+          </div>
+          <div class="field">
+            <label>Завантажити файл via Google Drive.</label>
+            <a target="_blank" href="https://drive.google.com/drive/folders/1lx0kCGxWoyQ7td-i4cYDKnl9Ky2uQIx_?usp=sharing">
+              <i class="large blue google icon"></i>
+            </a>
+          </div>
+          <div class="field" *ngIf="showEmailInputFlag">
+            <label>Та вкажіть Email на який вам відправити готовий макет:</label>
+            <input type="text" formControlName="email" (change)="tempFormValueRefresh()">
           </div>
         </div>
       </div>

@@ -1,24 +1,38 @@
-<a [routerLink]="['/order-details/', order._id]" *ngFor='let order of orders' style="background-color: #fafafa;">
-    <div class="ui big segment">
-        <div class="ui stackable grid link">
-            <div class="one wide column">
-                {{order.price}}
-            </div>
-            <div class="two wide column">
-                {{order.product}}
-            </div>
-            <div class="two wide column">
-                {{order.address}}
-            </div>
-            <div class="five wide column">
-                {{order.warehouse}}
-            </div>
-            <div class="three wide column">
-                {{order.name}} {{order.surName}}
-            </div>
-            <div class="three wide column">
-                {{order.phone}}
-            </div>
+<div class="ui big segment">
+    <form class="ui big form" [formGroup]="searchInputForm" (ngSubmit)="onSearchSubmit(searchInputForm)">
+        <div class="field">
+            <label>Search:</label>
+            <input type="text" formControlName="phone">
         </div>
+        <div class="field">
+            <button class="ui blue big button" [disabled]="!searchInputForm.valid">
+                Знайти
+            </button>
+            <br>
+        </div>
+    </form>
+    <div class="ui segment" *ngFor='let item of orders'>
+        <a [routerLink]="['/order-details/', item._id]">
+            <div class="ui stackable grid link">
+                <div class="one wide column">
+                    {{item.price}}
+                </div>
+                <div class="two wide column">
+                    {{item.product}}
+                </div>
+                <div class="two wide column">
+                    {{item.address}}
+                </div>
+                <div class="five wide column">
+                    {{item.warehouse}}
+                </div>
+                <div class="three wide column">
+                    {{item.name}} {{item.surName}}
+                </div>
+                <div class="three wide column">
+                    {{item.phone}}
+                </div>
+            </div>
+        </a>
     </div>
-</a>
+</div>

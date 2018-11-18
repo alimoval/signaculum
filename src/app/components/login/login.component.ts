@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private _fb: FormBuilder,
     private _authService: AuthService,
     private _router: Router,
-    private _flashMessagesService: FlashMessagesService,
+    private _flashMessagesService: FlashMessagesService
   ) { }
 
   createForm() {

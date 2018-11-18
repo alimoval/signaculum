@@ -14,6 +14,16 @@ router.get('/orders', passport.authenticate('jwt', { session: false }), function
     });
 });
 
+// Get Orders By Phone
+router.get('/ordersByPhone/:phone', function (req, res, next) {
+    db.orders.find({ phone: req.params.phone }, function (err, order) {
+        if (err) {
+            res.send(err);
+        }
+        res.json(order);
+    });
+});
+
 // Get Single Order
 router.get('/order-details/:id', function (req, res, next) {
     db.orders.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, order) {
