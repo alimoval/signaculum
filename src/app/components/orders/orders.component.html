@@ -2,16 +2,16 @@
     <form class="ui big form" [formGroup]="searchInputForm" (ngSubmit)="onSearchSubmit(searchInputForm)">
         <div class="field">
             <label>Search:</label>
-            <input type="text" formControlName="phone">
+            <input type="text" formControlName="phone" placeholder="0501234567">
         </div>
         <div class="field">
-            <button class="ui blue big button" [disabled]="!searchInputForm.valid">
+            <button class="ui blue medium button" [disabled]="!searchInputForm.valid">
                 Знайти
             </button>
             <br>
         </div>
     </form>
-    <div class="ui segment" *ngFor='let item of orders'>
+    <div *ngFor='let item of orders' [className]="item.status == 'done' ? 'ui segment green' : 'ui segment red'">
         <a [routerLink]="['/order-details/', item._id]">
             <div class="ui stackable grid link">
                 <div class="one wide column">

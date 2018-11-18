@@ -15,4 +15,5 @@ export class Order {
     warehouse: string;
     width: string;
     height: string;
+    status: string;
 }
