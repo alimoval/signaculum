@@ -51,13 +51,13 @@
               <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
             </div>
           </div>
-          <h2 class="ui header">
+          <h1 class="ui red header">
             {{product.name}}
-          </h2>
-          <h1 class="ui green header">
-            {{price}} грн
           </h1>
-          <h2 class="ui red header" *ngIf="!luvers">
+          <h1 class="ui green header">
+            <i class="icon money bill alternate"></i> {{price}} грн
+          </h1>
+          <h2 class="ui green header" *ngIf="!luvers">
             <i class="icon gift"></i> Доставка у подарунок!
           </h2>
         </div>
@@ -97,7 +97,8 @@
             </div>
             <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" placeholder='Одеса'>
             <br>
-            <i class="icon blue arrow down"></i> відкриває список міст
+            <br>
+            <i class="icon blue arrow down"></i>відкриває список міст
             <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
               <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">
                 {{city.Description}}
@@ -153,7 +154,7 @@
         </div>
       </div>
       <div style="background-color: #fafafa;" class="ui huge raised segment">
-        <h1 class="ui green header">
+        <h1 class="ui red header">
           <div class="content">
             Ціна {{price}} грн
           </div>

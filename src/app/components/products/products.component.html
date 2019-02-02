@@ -1,34 +1,37 @@
-<div class="ui left aligned huge raised segment center aligned" style="background-color: #f5f5f5;">
-  <h1 class="ui blue header">Друкуйте поліграфію та рекламу швидко та зручно.</h1>
+<div>
+  <div class="ui raised segment" style="padding: 7px; margin: 0 auto;">
+    <h2 class="ui large blue header fluid center aligned" style="line-height: 1.5rem">Поліграфія та реклама швидко і зручно.</h2>
+  </div>
+</div>
+<div class="ui raised segments">
+  <div class="ui segment">
+    <h3 class="ui medium header center blue aligned">
+      1. Оберіть потрібний товар.
+    </h3>
+  </div>
+  <div class="ui four columns doubling grid menu segment">
+    <div *ngFor='let product of products' class="ui column center aligned item link">
+      <a [routerLink]="['/order-form/', product._id]">
+        <div class="ui top left large blue attached label">{{product.name}}</div>
+        <img [src]="product.imgSrc" alt="" class="ui image">
+      </a>
+    </div>
+  </div>
+</div>
+<div class="ui left aligned huge raised segment center aligned" style="padding: 4px;">
   <p>
     <i class="icon blue address card"></i> Без реєстрації.
   </p>
   <p>
-    <i class="icon blue calculator"></i>Дізнайтесть ціну <i class="icon blue money"></i>в один клік.
+    <i class="icon blue money"></i>Дізнайтесть ціну в один дотик.
   </p>
   <p>
-    <i class="icon blue edit"></i>Ми розробимо макет <i class="icon blue image"></i> після замовлення.
+    <i class="icon blue edit"></i>Ми розробимо Ваш макет.
   </p>
   <p>
     <i class="icon blue paper plane"></i>Доставимо Новою Поштою в найближче відділення. <i class="icon blue marker"></i>
   </p>
   <h4 class="ui medium blue header center aligned">
-    <i class="icon blue arrow down"></i>
     Лише 5 простих кроків.
   </h4>
-</div>
-<div class="ui blue raised segments">
-  <div class="ui huge segment">
-    <h3 class="ui medium blue header center aligned">
-      1. Оберіть потрібний товар.
-    </h3>
-  </div>
-  <div class="ui four columns stackable grid menu blue segment">
-    <div class="ui column center aligned item link" *ngFor='let product of products'>
-      <a [routerLink]="['/order-form/', product._id]">
-        <div class="ui top left huge blue attached label">{{product.name}}</div>
-        <img [src]="product.imgSrc" alt="" class="ui image" style='padding-left:40px;padding-top:30px;'>
-      </a>
-    </div>
-  </div>
 </div>

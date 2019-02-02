@@ -14,11 +14,8 @@
     <div *ngFor='let item of orders' [className]="item.status == 'done' ? 'ui segment green' : 'ui segment red'">
         <a [routerLink]="['/order-details/', item._id]">
             <div class="ui stackable grid link">
-                <div class="one wide column">
-                    {{item.price}}
-                </div>
-                <div class="two wide column">
-                    {{item.product}}
+                <div class="three wide column">
+                    {{item.name}} {{item.surName}}
                 </div>
                 <div class="two wide column">
                     {{item.address}}
@@ -27,10 +24,13 @@
                     {{item.warehouse}}
                 </div>
                 <div class="three wide column">
-                    {{item.name}} {{item.surName}}
-                </div>
-                <div class="three wide column">
                     {{item.phone}}
+                </div>
+                <div class="two wide column">
+                    {{item.product}}
+                </div>
+                <div class="one wide column">
+                    {{item.price}}
                 </div>
             </div>
         </a>
