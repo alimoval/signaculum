@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Order } from '../../../Order';
-import { AuthService } from '../../services/auth.service';
 import { OrderService } from '../../services/order.service';
-import { Router } from '@angular/router';
-import { FlashMessagesService } from 'angular2-flash-messages';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -21,11 +18,14 @@ export class OrdersComponent implements OnInit {
 
   constructor(
     private _fb: FormBuilder,
-    private _authService: AuthService,
     private _orderService: OrderService,
-    private _router: Router,
-    private _flashMessagesService: FlashMessagesService
   ) { }
+
+  ngOnInit() {
+    this.getOrders();
+    this.createForm();
+    this.onChanges();
+  }
 
   createForm() {
     this.searchInputForm = this._fb.group({
@@ -51,9 +51,10 @@ export class OrdersComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
-    this.getOrders();
-    this.createForm();
+  onChanges = (): void => {
+    this.searchInputForm.valueChanges.subscribe(() => {
+      this.onSearchSubmit(this.searchInputForm);
+    });
   }
 
 }
