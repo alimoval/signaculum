@@ -1,14 +1,9 @@
-<div>
-  <div class="ui raised segment" style="padding: 7px; margin: 0 auto;">
-    <h2 class="ui large blue header fluid center aligned" style="line-height: 1.5rem">Поліграфія та реклама швидко і зручно.</h2>
+<!-- <div>
+  <div class="ui raised segment" style="padding: 7px; margin: -8px 0;">
+    <h2 class="ui large blue header fluid center aligned" style="line-height: 1.5rem">Друковані оголошення</h2>
   </div>
-</div>
+</div> -->
 <div class="ui raised segments">
-  <div class="ui segment">
-    <h3 class="ui medium header center blue aligned">
-      1. Оберіть потрібний товар.
-    </h3>
-  </div>
   <div class="ui four columns doubling grid menu segment">
     <div *ngFor='let product of products' class="ui column center aligned item link">
       <a [routerLink]="['/order-form/', product._id]">
@@ -23,15 +18,12 @@
     <i class="icon blue address card"></i> Без реєстрації.
   </p>
   <p>
-    <i class="icon blue money"></i>Дізнайтесть ціну в один дотик.
+    <i class="icon blue money"></i>Ціна в один дотик.
   </p>
   <p>
-    <i class="icon blue edit"></i>Ми розробимо Ваш макет.
+    <i class="icon blue edit"></i>Розробимо будь-який макет.
   </p>
   <p>
-    <i class="icon blue paper plane"></i>Доставимо Новою Поштою в найближче відділення. <i class="icon blue marker"></i>
+    <i class="icon blue paper plane"></i>Новою Поштою в найближче відділення.
   </p>
-  <h4 class="ui medium blue header center aligned">
-    Лише 5 простих кроків.
-  </h4>
 </div>

@@ -6,31 +6,33 @@
       </div>
     </div>
   </div> -->
-  <div class="sixteen wide column">
+  <div class="sixteen wide column" style="padding: 0!important">
     <form class="ui form" *ngIf="product" [formGroup]="orderForm" (ngSubmit)="onSubmit(orderForm)">
       <div class="ui raised segments">
         <div class="ui huge segment">
-          <h3 class="ui small blue header">
-            <i class="icon blue gift"></i>
-            2. Дізнайтесь ціну і подарунок.
-          </h3>
+          <h1 class="ui blue small header">
+            {{product.name}}
+          </h1>
+          <h1 class="ui blue header">
+            <i class="icon money bill alternate"></i> {{price}} грн
+          </h1>
+          <h2 class="ui green small header" *ngIf="!luvers">
+            <i class="icon gift"></i> Доставка у подарунок!
+          </h2>
         </div>
         <div class="ui big blue segment" style="background-color: #fafafa;">
-          <p>Логотип нагорі завжди поверне до меню товарів.
-            <i class="icon blue arrow up"></i>
-          </p>
-          <p>{{product.info}}</p>
           <div *ngIf="!outdoor">
+            <div class="field">
+              <label>Кількість:</label>
+              <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
+            </div>
             <div class="field">
               <label>Розмір:</label>
               <select class="ui dropdown" formControlName="size" (change)="tempFormValueRefresh()">
                 <option *ngFor="let size of product.sizes">{{size}}</option>
               </select>
             </div>
-            <div class="field">
-              <label>Кількість:</label>
-              <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
-            </div>
+            <p>{{product.info}}</p>
           </div>
           <div *ngIf="outdoor">
             <div class="field">
@@ -51,15 +53,6 @@
               <input type="text" formControlName="amount" (input)="tempFormValueRefresh()">
             </div>
           </div>
-          <h1 class="ui red header">
-            {{product.name}}
-          </h1>
-          <h1 class="ui green header">
-            <i class="icon money bill alternate"></i> {{price}} грн
-          </h1>
-          <h2 class="ui green header" *ngIf="!luvers">
-            <i class="icon gift"></i> Доставка у подарунок!
-          </h2>
         </div>
       </div>
       <div class="ui raised segments">
