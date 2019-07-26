@@ -16,10 +16,11 @@ router.get('/orders', passport.authenticate('jwt', { session: false }), function
 
 // Get Orders By Phone
 router.get('/ordersByPhone/:phone', function (req, res, next) {
-    db.orders.find({ phone: /req.params.phone/ }, function (err, order) {
+    let query = req.params.phone + '';    
+    db.orders.find({phone:{'$regex' : query, '$options' : 'i'}}, function (err, order) {
         if (err) {
             res.send(err);
-        }
+        }   
         res.json(order);
     });
 });
