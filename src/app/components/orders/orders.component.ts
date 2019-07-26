@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Order } from '../../../Order';
+import { Order } from '../../models/Order';
 import { OrderService } from '../../services/order.service';
 
 @Component({

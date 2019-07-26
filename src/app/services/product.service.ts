@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http, Headers, Response } from '@angular/http';
-import { Product } from '../../Product';
+import { Product } from '../models/Product';
 import 'rxjs/add/operator/map';
 
 @Injectable()

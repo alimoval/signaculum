@@ -16,7 +16,7 @@ router.get('/orders', passport.authenticate('jwt', { session: false }), function
 
 // Get Orders By Phone
 router.get('/ordersByPhone/:phone', function (req, res, next) {
-    db.orders.find({ phone: req.params.phone }, function (err, order) {
+    db.orders.find({ phone: /req.params.phone/ }, function (err, order) {
         if (err) {
             res.send(err);
         }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Order } from '../../../Order';
+import { Order } from '../../models/Order';
 import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/switchMap';
 

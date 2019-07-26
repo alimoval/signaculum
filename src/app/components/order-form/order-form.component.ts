@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { OrderService } from '../../services/order.service';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../../Product';
+import { Product } from '../../models/Product';
 import { NovaPoshtaService } from '../../services/nova-poshta.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
