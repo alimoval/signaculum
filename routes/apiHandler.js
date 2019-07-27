@@ -67,20 +67,19 @@ router.delete('/order/:id', function (req, res, next) {
 
 // Update Order
 router.put('/order/:id', function (req, res, next) {
-    var order = req.body;
-    var updOrder = {};
+    const body = req.body;
 
-    if (order.phone) {
-        updOrder.name = order.name;
-    }
-
-    if (!updOrder) {
+    if (!body) {
         res.status(400);
         res.json({
             "error": "Bad Data"
         });
     } else {
-        db.orders.update({ _id: mongojs.ObjectId(req.params.id) }, updOrder, {}, function (err, order) {
+        db.orders.findAndModify({
+            query: { _id: mongojs.ObjectId(req.params.id) },
+            update: { $set: body },
+            new: true
+        }, function (err, order) {
             if (err) {
                 res.send(err);
             }

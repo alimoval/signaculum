@@ -47,5 +47,10 @@
     <div class="two wide column">
       {{order.height}}
     </div>
+    <div class="one wide column" *ngIf="order.status !== 'done'">
+      <button (click)="finishOrder(order._id)" class="ui mini positive icon button">
+        <i class="money icon"></i>
+      </button>
+    </div>
   </div>
 </div>

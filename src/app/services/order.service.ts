@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { Http, Headers } from '@angular/http';
-// import { Order } from '../../Order';
-import { AuthService } from './auth.service';
+
 import 'rxjs/add/operator/map';
+
+import { environment } from '../../environments/environment';
+
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class OrderService {
@@ -48,6 +50,11 @@ export class OrderService {
 
   deleteOrder(id) {
     return this._http.delete(this.base + '/api/order/' + id)
+      .map(res => res.json());
+  }
+
+  finishOrder(id) {
+    return this._http.put(this.base + '/api/order/' + id, { status: 'done' })
       .map(res => res.json());
   }
 

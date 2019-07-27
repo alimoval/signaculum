@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Order } from '../../models/Order';
+import { OrderService } from '../../services/order.service';
 import { AuthService } from '../../services/auth.service';
 import 'rxjs/add/operator/switchMap';
 
@@ -18,6 +19,7 @@ export class OrderDetailsComponent implements OnInit {
 
   constructor(
     private _authServise: AuthService,
+    private orderService: OrderService,
     private _route: ActivatedRoute,
     private _router: Router
   ) {
@@ -38,6 +40,18 @@ export class OrderDetailsComponent implements OnInit {
       .subscribe(data => {
         this.router.navigate(['./orders']);
       });
+  }
+
+  finishOrder(id) {
+    this.orderService.finishOrder(id)
+      .subscribe(
+        data => {
+          this.router.navigate(['./orders']);
+          },
+        err => {
+          console.log('err', err);
+        }
+      );
   }
 
   ngOnInit() {
