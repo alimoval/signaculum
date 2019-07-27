@@ -54,8 +54,8 @@
   </div>
   <div class="ui raised segments">
     <div class="ui segment" *ngIf="!luvers">
-      <h2 class="ui red header">
-        <i class="icon gift"></i> Доставка НП у подарунок!
+      <h2 class="ui green medium header">
+        <i class="icon gift"></i> Доставка Нова Пошта у подарунок!
       </h2>
     </div>
     <div class="ui segment" *ngIf="luvers">
@@ -125,9 +125,6 @@
           Відділення - обов`язкове поле
         </div>
       </div>
-      <div class="field">
-        Для оформлення кур'єрської доставки вкажіть адресу у коментарях
-      </div>
     </div>
   </div>
   <div class="ui raised segments">
@@ -136,7 +133,7 @@
         <i class="icon blue image"></i>Коментар або файли. (необов`язково)
       </h3>
     </div>
-    <div class="ui big blue segment" style="background-color: #fafafa;">
+    <div class="ui big black segment" style="background-color: #fafafa;">
       <div class="field">
         <label>Коментар:</label>
         <textarea
@@ -145,7 +142,7 @@
             </textarea>
       </div>
       <div class="field">
-        <button class="ui basic raised button">
+        <button class="ui basic button">
           <a target="_blank"
             href="https://drive.google.com/drive/folders/1lx0kCGxWoyQ7td-i4cYDKnl9Ky2uQIx_?usp=sharing">
             Завантажити файл на Google Drive
@@ -180,11 +177,11 @@
 </form>
 <div class="ui raised segments" *ngIf="purchaseFlag">
   <div class="ui huge segment">
-    <h3 class="ui small blue header">
-      <i class="blue payment icon"></i> 5. Оплата.
+    <h3 class="ui small green header">
+      <i class="blue payment icon"></i>Оплата.
     </h3>
   </div>
-  <div class="ui big blue segment" style="background-color: #fafafa;">
+  <div class="ui big black segment" style="background-color: #fafafa;">
     <p>Це останній крок.</p>
     <p> Для запуску друку зробіть оплату на карту.</p>
     <div class="ui center aligned grid">
