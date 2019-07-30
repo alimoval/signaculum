@@ -71,8 +71,8 @@ export class OrderFormComponent implements OnInit {
       price: [product.price, Validators.required],
       phone: ['', Validators.required],
       size: [product.sizes[0], Validators.required],
-      width: [1000, Validators.required],
-      height: [1000, Validators.required],
+      width: [0, Validators.required],
+      height: [0, Validators.required],
       surName: ['', Validators.required],
       warehouse: ['', Validators.required]
     });
@@ -162,7 +162,10 @@ export class OrderFormComponent implements OnInit {
 
   addOrder(data) {
     this._orderService.addOrder(data)
-      .subscribe();
+      .subscribe(
+        res => console.log('New Order Added'),
+        err => console.log('err', err)
+      );
   }
 
   onSubmit(orderForm): void {

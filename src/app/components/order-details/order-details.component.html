@@ -3,13 +3,35 @@
     <div class="one wide column">
       {{order.price}}
     </div>
+    <div *ngIf="order.date" class="two wide column">
+      {{order.date.split('T')[0]}}
+    </div>
     <div class="one wide column">
       {{order.amount}}
     </div>
     <div class="two wide column">
       {{order.product}}
     </div>
-    <div class="two wide column">
+    <div class="three wide column">
+      {{order.size}}
+    </div>
+    <div *ngIf="order.width" class="two wide column">
+      {{order.width}}
+    </div>
+    <div *ngIf="order.height" class="two wide column">
+      {{order.height}}
+    </div>
+    <div class="one wide column" *ngIf="order.status !== 'done'">
+      <button (click)="finishOrder(order._id)" class="ui mini positive icon button">
+        <i class="money icon"></i>
+      </button>
+    </div>
+    <div class="one wide column">
+      <button (click)="deleteOrder(order._id)" class="ui mini negative icon button">
+        <i class="trash icon"></i>
+      </button>
+    </div>
+    <div class="three wide column">
       {{order.address}}
     </div>
     <div class="three wide column">
@@ -24,33 +46,14 @@
     <div class="two wide column">
       {{order.phone}}
     </div>
-    <div class="one wide column">
-      <button (click)="deleteOrder(order._id)" class="ui mini negative icon button">
-        <i class="trash icon"></i>
-      </button>
-    </div>
     <div class="six wide column">
       {{order.description}}
-    </div>
-    <div class="two wide column">
-      {{order.size}}
     </div>
     <div class="three wide column">
       {{order.email}}
     </div>
     <div class="three wide column">
       {{order.link}}
-    </div>
-    <div class="two wide column">
-      {{order.width}}
-    </div>
-    <div class="two wide column">
-      {{order.height}}
-    </div>
-    <div class="one wide column" *ngIf="order.status !== 'done'">
-      <button (click)="finishOrder(order._id)" class="ui mini positive icon button">
-        <i class="money icon"></i>
-      </button>
     </div>
   </div>
 </div>

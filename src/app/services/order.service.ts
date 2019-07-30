@@ -44,6 +44,7 @@ export class OrderService {
   addOrder(newOrder) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    newOrder['date'] = new Date();
     return this._http.post(this.base + '/api/order', newOrder, { headers: headers })
       .map(res => res.json());
   }
