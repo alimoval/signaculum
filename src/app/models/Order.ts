@@ -16,4 +16,5 @@ export class Order {
     width: string;
     height: string;
     status: string;
+    date: string;
 }
