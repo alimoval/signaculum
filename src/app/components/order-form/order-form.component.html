@@ -95,10 +95,6 @@
         </div>
         <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" placeholder='Одеса'>
         <br>
-        <br>
-        <div class="ui large blue label">
-          розгорніть список міст
-        </div>
         <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
           <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">
             {{city.Description}}
