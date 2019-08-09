@@ -90,11 +90,11 @@
       </div>
       <div class="field">
           <label>Місто доставки: *</label>
-          <!-- <div class="ui large blue label">
-            шукайте українською
-          </div> -->
+          <div class="ui large blue label">
+            шукайте українською <i class="ua flag"></i>
+          </div>
           <ng-select [items]="novaPoshtaCities"
-            bindLabel="DescriptionRu"
+            bindLabel="Description"
             bindValue="Description"
             formControlName="address"
             (change)="getNovaPoshtaWarehouses($event);">
