@@ -89,6 +89,18 @@
         </div>
       </div>
       <div class="field">
+        <div class="ui raised segment">
+
+          <ng-select *ngIf="novaPoshtaCities$.length"
+              [items]='novaPoshtaCities$ | async'>
+          </ng-select>
+      
+        </div>
+      </div>
+
+
+
+      <div class="field">
         <label>Місто доставки: *</label>
         <div class="ui large blue label">
           шукайте українською
@@ -100,9 +112,6 @@
             {{city.Description}}
           </option>
         </select>
-        <!--<select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
-                                <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities" >{{city.Description}}</option>
-                            </select>-->
         <div class="ui mini negative message"
           *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
           Місто доставки - обов`язкове поле

@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { OrderService } from '../../services/order.service';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../models/Product';
-import { NovaPoshtaService } from '../../services/nova-poshta.service';
+
+// tslint:disable-next-line:import-blacklist
+import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+
+import { Product } from '../../models/Product';
+
+import { OrderService } from '../../services/order.service';
+import { ProductService } from '../../services/product.service';
+import { NovaPoshtaService } from '../../services/nova-poshta.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -15,6 +22,8 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./order-form.component.css']
 })
 export class OrderFormComponent implements OnInit {
+
+  public novaPoshtaCities$: Observable<any>;
 
   public router: Router;
   public orderForm: FormGroup;
@@ -38,9 +47,16 @@ export class OrderFormComponent implements OnInit {
     private _productService: ProductService,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private _ngSelect: NgSelectModule,
   ) {
     this.router = _router;
+  }
+
+  ngOnInit() {
+    this.getProduct();
+    this.getNovaPoshtaCities();
+    this.newGetNovaPoshtaCities();
   }
 
   // Get Order Product
@@ -74,7 +90,8 @@ export class OrderFormComponent implements OnInit {
       width: [0, Validators.required],
       height: [0, Validators.required],
       surName: ['', Validators.required],
-      warehouse: ['', Validators.required]
+      warehouse: ['', Validators.required],
+      city: ''
     });
     if (this.outdoor) {
       this.orderForm.patchValue({
@@ -142,8 +159,18 @@ export class OrderFormComponent implements OnInit {
       });
   }
 
+  // New method to get nova poshta сities and store it like Observable
+  newGetNovaPoshtaCities() {
+    setTimeout(() => {
+      this.novaPoshtaCities$ = this._novaPoshtaService.getCities();
+      console.log('this.novaPoshtaCities$', this.novaPoshtaCities$);
+    }, 0);
+  }
+
   getNovaPoshtaCityName(event) {
+    console.log('event.target.value', event.target.value);
     this._novaPoshtaService.getCity(event.target.value)
+      .do(res => console.log('response', res))
       .subscribe(response => {
         this.novaPoshtaCityName = response.data[0].Description;
         this.orderForm.patchValue({
@@ -186,11 +213,6 @@ export class OrderFormComponent implements OnInit {
     this.orderForm.patchValue({
       image: fileInput.target.files
     });
-  }
-
-  ngOnInit() {
-    this.getProduct();
-    this.getNovaPoshtaCities();
   }
 
 }

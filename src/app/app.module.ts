@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './guards/auth.guard';
+import { FlashMessagesModule } from 'angular2-flash-messages';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import { AppComponent } from './app.component';
 import { OrdersComponent } from './components/orders/orders.component';
@@ -17,14 +17,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './guards/auth.guard';
+import { CitySearchPipe } from './pipes/city-search.pipe';
+
 import { NovaPoshtaService } from './services/nova-poshta.service';
 import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { AuthService } from './services/auth.service';
-import { FlashMessagesModule } from 'angular2-flash-messages';
-
-import { CitySearchPipe } from './pipes/city-search.pipe';
-
 
 @NgModule({
   declarations: [
@@ -46,6 +46,7 @@ import { CitySearchPipe } from './pipes/city-search.pipe';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    NgSelectModule,
     FlashMessagesModule.forRoot(),
   ],
   providers: [
