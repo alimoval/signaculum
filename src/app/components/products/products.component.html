@@ -6,10 +6,14 @@
 <div class="ui raised segments">
   <div class="ui four columns doubling grid menu segment">
     <div *ngFor='let product of products' class="ui column center aligned item link">
-      <a [routerLink]="['/order-form/', product._id]">
-        <div class="ui top left large blue attached label">{{product.name}}</div>
+      <!-- <a [routerLink]="['/order-form/', product._id]">
+        <div class="ui top left large blue attached label"></div>
         <img [src]="product.imgSrc" alt="" class="ui image">
+      </a> -->
+      <a [routerLink]="['/order-form/', product._id]" class="ui medium image">
+        <img [src]="product.imgSrc">
       </a>
+      <div style="padding: 10px 0px; margin: 0px;" class="ui bottom attached large blue label">{{product.name}}</div>
     </div>
   </div>
 </div>
