@@ -56,7 +56,6 @@ export class OrderFormComponent implements OnInit {
   ngOnInit() {
     this.getProduct();
     this.getNovaPoshtaCities();
-    this.newGetNovaPoshtaCities();
   }
 
   // Get Order Product
@@ -90,8 +89,7 @@ export class OrderFormComponent implements OnInit {
       width: [0, Validators.required],
       height: [0, Validators.required],
       surName: ['', Validators.required],
-      warehouse: ['', Validators.required],
-      city: ''
+      warehouse: ['', Validators.required]
     });
     if (this.outdoor) {
       this.orderForm.patchValue({
@@ -159,31 +157,15 @@ export class OrderFormComponent implements OnInit {
       });
   }
 
-  // New method to get nova poshta сities and store it like Observable
-  newGetNovaPoshtaCities() {
-    setTimeout(() => {
-      this.novaPoshtaCities$ = this._novaPoshtaService.getCities();
-      console.log('this.novaPoshtaCities$', this.novaPoshtaCities$);
-    }, 0);
-  }
-
-  getNovaPoshtaCityName(event) {
-    console.log('event.target.value', event.target.value);
-    this._novaPoshtaService.getCity(event.target.value)
-      .do(res => console.log('response', res))
-      .subscribe(response => {
-        this.novaPoshtaCityName = response.data[0].Description;
-        this.orderForm.patchValue({
-          address: this.novaPoshtaCityName
+  getNovaPoshtaWarehouses(city) {
+    this._novaPoshtaService.getWarehouses(city.Ref)
+      .subscribe(
+        response => {
+          this.novaPoshtaWarehouses = response.data;
+        },
+        err => {
+          console.log('err', err);
         });
-      });
-  }
-
-  getNovaPoshtaWarehouses(event) {
-    this._novaPoshtaService.getWarehouses(event.target.value)
-      .subscribe(response => {
-        this.novaPoshtaWarehouses = response.data;
-      });
     this.tempFormValueRefresh();
   }
 

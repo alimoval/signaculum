@@ -89,34 +89,22 @@
         </div>
       </div>
       <div class="field">
-        <div class="ui raised segment">
-
-          <ng-select *ngIf="novaPoshtaCities$.length"
-              [items]='novaPoshtaCities$ | async'>
+          <label>Місто доставки: *</label>
+          <div class="ui large blue label">
+            шукайте українською
+          </div>
+          <ng-select [items]="novaPoshtaCities"
+            bindLabel="Description"
+            bindValue="Description"
+            formControlName="address"
+            (change)="getNovaPoshtaWarehouses($event);">
           </ng-select>
-      
-        </div>
       </div>
-
-
-
-      <div class="field">
-        <label>Місто доставки: *</label>
-        <div class="ui large blue label">
-          шукайте українською
-        </div>
-        <input [(ngModel)]="query" [ngModelOptions]="{standalone: true}" placeholder='Одеса'>
-        <br>
-        <select class="ui fluid dropdown" (change)="getNovaPoshtaWarehouses($event); getNovaPoshtaCityName($event);">
-          <option value="{{city.Ref}}" *ngFor="let city of novaPoshtaCities | citySearch:'Description':query">
-            {{city.Description}}
-          </option>
-        </select>
+      <div class="field">  
         <div class="ui mini negative message"
           *ngIf="orderForm.get('address').hasError('required') && orderForm.get('address').touched">
           Місто доставки - обов`язкове поле
         </div>
-        <input type="text" [hidden]="true" formControlName="address">
       </div>
       <div class="field">
         <label>Відділення: *</label>
